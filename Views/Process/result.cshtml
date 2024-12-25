@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "Sonuç";
+}
+
+<h2>Algoritma Sonuçları</h2>
+
+<div>
+    <h3>Algoritma: @ViewBag.Algorithm</h3>
+    <p>Array Type: @ViewBag.ArrayType</p>
+    <p>Array Size: @ViewBag.ArraySize</p>
+    <p>Time Taken: @ViewBag.TimeTaken ms</p>
+
+    <h4>Orijinal Dizi:</h4>
+    <pre>@string.Join(", ", ViewBag.OriginalArray)</pre>
+
+    <h4>Sıralanmış Dizi:</h4>
+    <pre>@string.Join(", ", ViewBag.SortedArray)</pre>
+</div>
+
+<h3>Kaynak Kullanımı</h3>
+<table border="1" cellpadding="5">
+    <thead>
+        <tr>
+            <th>Zaman (s)</th>
+            <th>Hafıza (MB)</th>
+            <th>CPU Kullanımı (%)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var usage in ViewBag.ResourceUsage)
+        {
+            <tr>
+                <td>@usage.Item1</td> <!-- Zaman -->
+                <td>@string.Format("{0:F6}", usage.Item2)</td> <!-- Hafıza (MB) -->
+                <td>@usage.Item3</td> <!-- CPU Kullanımı -->
+            </tr>
+        }
+    </tbody>
+</table>
+
+<h4>Ortalama Kaynak Kullanımı</h4>
+<p>Zaman (s): @string.Format("{0:F6}", ViewBag.AverageTime)</p>
+<p>Hafıza (MB): @string.Format("{0:F6}", ViewBag.AverageMemory)</p>
+<p>CPU Kullanımı (%): @string.Format("{0:F6}", ViewBag.AverageCpu)</p>

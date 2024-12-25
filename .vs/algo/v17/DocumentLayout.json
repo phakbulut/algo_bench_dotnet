@@ -1,0 +1,71 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\dotnet\\algo\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo\\views\\process\\result2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\result2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo\\views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 2,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "result2.cshtml",
+              "DocumentMoniker": "C:\\dotnet\\algo\\Views\\Process\\result2.cshtml",
+              "RelativeDocumentMoniker": "Views\\Process\\result2.cshtml",
+              "ToolTip": "C:\\dotnet\\algo\\Views\\Process\\result2.cshtml",
+              "RelativeToolTip": "Views\\Process\\result2.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-25T20:36:31.474Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "C:\\dotnet\\algo\\Views\\Process\\Index.cshtml",
+              "RelativeDocumentMoniker": "Views\\Process\\Index.cshtml",
+              "ToolTip": "C:\\dotnet\\algo\\Views\\Process\\Index.cshtml",
+              "RelativeToolTip": "Views\\Process\\Index.cshtml",
+              "ViewState": "AgIAAAcAAAAAAAAAAAAcwBcAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-12-25T20:32:50.141Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "ProcessController.cs",
+              "DocumentMoniker": "C:\\dotnet\\algo\\Controllers\\ProcessController.cs",
+              "RelativeDocumentMoniker": "Controllers\\ProcessController.cs",
+              "ToolTip": "C:\\dotnet\\algo\\Controllers\\ProcessController.cs",
+              "RelativeToolTip": "Controllers\\ProcessController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB8AAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-12-25T15:00:06.026Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

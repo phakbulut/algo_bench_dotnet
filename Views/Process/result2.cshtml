@@ -1,0 +1,41 @@
+﻿@using algo.Data
+@{
+    ViewBag.Title = "Results";
+    var results = ViewBag.LatestResults as List<AlgorithmLog> ?? new List<AlgorithmLog>();
+}
+
+<h2>Latest Algorithm Execution Results</h2>
+
+<table>
+    <thead>
+        <tr>
+            <th>Algorithm</th>
+            <th>Data Size</th>
+            <th>Order</th>
+            <th>Time Taken (ms)</th>
+            <th>Average Memory (MB)</th>
+            <th>Average CPU (%)</th>
+            <th>Average Time (s)</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var log in results)
+        {
+            <tr>
+                <td>@log.Algorithm</td>
+                <td>@log.ArraySize</td>
+                <td>@log.ArrayType</td>
+                <td>@log.TimeTaken</td>
+                <td>@log.AverageMemory</td>
+                <td>@log.AverageCpu</td>
+                <td>@log.AverageTime</td>
+            </tr>
+        }
+        @if (!results.Any())
+        {
+            <tr>
+                <td colspan="7">No results available.</td>
+            </tr>
+        }
+    </tbody>
+</table>

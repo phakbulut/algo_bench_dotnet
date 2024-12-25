@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = "Select Algorithm";
+}
+
+<h2>Select Algorithm</h2>
+
+@using (Html.BeginForm("Execute", "Process", FormMethod.Post))
+{
+    <div>
+        <label for="algorithm">Select Algorithm:</label>
+        <select name="algorithm" id="algorithm">
+            <option value="quick">Quick Sort</option>
+            <option value="heap">Heap Sort</option>
+            <option value="shell">Shell Sort</option>
+            <option value="radix">Radix Sort</option>
+            <option value="merge">Merge Sort</option>
+        </select>
+    </div>
+    <div>
+        <label for="dataSize">Select Data Size:</label>
+        <select name="dataSize" id="dataSize">
+            <option value="1000">1k</option>
+            <option value="10000">10k</option>
+            <option value="100000">100k</option>
+        </select>
+    </div>
+    <div>
+        <label for="order">Select Order:</label>
+        <select name="order" id="order">
+            <option value="random">Random</option>
+            <option value="partially sorted">partially sorted</option>
+            <option value="reverse">Reverse</option>
+        </select>
+    </div>
+    <button type="submit">Run Algorithm</button>
+}
+
+ <h2>Run All Combinations</h2>
+
+@using (Html.BeginForm("RunAllCombinations", "Process", FormMethod.Post))
+{
+    <div>
+        <label for="runCount">How many times to run all combinations:</label>
+        <input type="number" name="runCount" id="runCount" min="1" value="1" />
+    </div>
+    <button type="submit">Run All</button>
+} 
