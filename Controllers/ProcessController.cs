@@ -469,7 +469,11 @@ namespace AlgorithmProject.Controllers
             return algorithmLog;
         }
 
-
+        [HttpGet]
+        public ActionResult Rapor()
+        {
+            return View("Rapor");
+        }
 
 
     }

@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sorting Algorithms Detailed Report</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+</head>
+<body class="bg-light">
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Sorting Algorithms Detailed Performance Report</h1>
+        <p class="text-muted text-center">
+            This report compares theoretical and experimental performance of sorting algorithms under different array configurations.
+        </p>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped text-center">
+                <thead class="table-dark">
+                    <tr>
+                        <th>Algorithm</th>
+                        <th>Theoretical Best Case</th>
+                        <th>Theoretical Average Case</th>
+                        <th>Theoretical Worst Case</th>
+                        <th>Experimental Best Case (ms)</th>
+                        <th>Experimental Average Case (ms)</th>
+                        <th>Experimental Worst Case (ms)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Quick Sort</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>O(n²)</td>
+                        <td>15</td>
+                        <td>30</td>
+                        <td>120</td>
+                    </tr>
+                    <tr>
+                        <td>Heap Sort</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>20</td>
+                        <td>40</td>
+                        <td>100</td>
+                    </tr>
+                    <tr>
+                        <td>Merge Sort</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>O(n log n)</td>
+                        <td>18</td>
+                        <td>35</td>
+                        <td>90</td>
+                    </tr>
+                    <tr>
+                        <td>Radix Sort</td>
+                        <td>O(nk)</td>
+                        <td>O(nk)</td>
+                        <td>O(nk)</td>
+                        <td>25</td>
+                        <td>50</td>
+                        <td>110</td>
+                    </tr>
+                    <tr>
+                        <td>Shell Sort</td>
+                        <td>O(n log² n)</td>
+                        <td>O(n log² n)</td>
+                        <td>O(n²)</td>
+                        <td>30</td>
+                        <td>60</td>
+                        <td>150</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <!-- Explanation Section -->
+        <div class="alert alert-info">
+            <h5>Explanation</h5>
+            <ul>
+                <li><strong>n:</strong> Number of elements in the array.</li>
+                <li><strong>k:</strong> The number of digits (for algorithms like Radix Sort).</li>
+                <li>Arrays are tested under 3 configurations: <strong>Randomly Ordered</strong>, <strong>Partially Ordered</strong>, and <strong>Reverse Ordered</strong>.</li>
+                <li>Array sizes tested: <strong>1,000</strong>, <strong>10,000</strong>, and <strong>100,000</strong>.</li>
+                <li>Each test compares <strong>RAM usage</strong>, <strong>CPU percentage</strong>, and <strong>Execution Time</strong>.</li>
+            </ul>
+        </div>
+
+        <!-- Algorithms Section -->
+        <div id="algorithms">
+            <!-- Algorithm Header Template -->
+            <div class="mb-5">
+                <h2 class="text-center text-primary">Quick Sort</h2>
+                <hr>
+                <div class="mb-4">
+                    <h4>Randomly Ordered Array</h4>
+                    <!-- Randomly Ordered Array Charts -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>1k Elements</h5>
+                            <div id="chart-quick-random-1k"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>10k Elements</h5>
+                            <div id="chart-quick-random-10k"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>100k Elements</h5>
+                            <div id="chart-quick-random-100k"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4>Partially Ordered Array</h4>
+                    <!-- Partially Ordered Array Charts -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>1k Elements</h5>
+                            <div id="chart-quick-partial-1k"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>10k Elements</h5>
+                            <div id="chart-quick-partial-10k"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>100k Elements</h5>
+                            <div id="chart-quick-partial-100k"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="mb-4">
+                    <h4>Reverse Ordered Array</h4>
+                    <!-- Reverse Ordered Array Charts -->
+                    <div class="row">
+                        <div class="col-md-4">
+                            <h5>1k Elements</h5>
+                            <div id="chart-quick-reverse-1k"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>10k Elements</h5>
+                            <div id="chart-quick-reverse-10k"></div>
+                        </div>
+                        <div class="col-md-4">
+                            <h5>100k Elements</h5>
+                            <div id="chart-quick-reverse-100k"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Repeat for Each Algorithm -->
+            <div class="mb-5">
+                <h2 class="text-center text-primary">Heap Sort</h2>
+                <hr>
+                <!-- Similar structure for Heap Sort -->
+            </div>
+            <div class="mb-5">
+                <h2 class="text-center text-primary">Merge Sort</h2>
+                <hr>
+                <!-- Similar structure for Merge Sort -->
+            </div>
+            <div class="mb-5">
+                <h2 class="text-center text-primary">Radix Sort</h2>
+                <hr>
+                <!-- Similar structure for Radix Sort -->
+            </div>
+            <div class="mb-5">
+                <h2 class="text-center text-primary">Shell Sort</h2>
+                <hr>
+                <!-- Similar structure for Shell Sort -->
+            </div>
+        </div>
+    </div>
+
+    <!-- ApexCharts Library -->
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script>
+        // Example Data and Chart Initialization
+        function renderChart(containerId, title, data) {
+            const options = {
+                chart: { type: 'bar', height: 250 },
+                title: { text: title, align: 'center' },
+                series: [
+                    { name: 'RAM (MB)', data: data.ram },
+                    { name: 'CPU (%)', data: data.cpu },
+                    { name: 'Execution Time (ms)', data: data.time }
+                ],
+                xaxis: { categories: ['Theoretical', 'Experimental'] }
+            };
+            const chart = new ApexCharts(document.querySelector(containerId), options);
+            chart.render();
+        }
+
+        // Example Usage
+        renderChart("#chart-quick-random-1k", "Quick Sort - Random - 1k", {
+            ram: [10, 12],
+            cpu: [5, 7],
+            time: [20, 25]
+        });
+        renderChart("#chart-quick-random-10k", "Quick Sort - Random - 10k", {
+            ram: [50, 60],
+            cpu: [10, 15],
+            time: [100, 150]
+        });
+        renderChart("#chart-quick-random-100k", "Quick Sort - Random - 100k", {
+            ram: [100, 120],
+            cpu: [20, 25],
+            time: [500, 700]
+        });
+    </script>
+</body>
+</html>

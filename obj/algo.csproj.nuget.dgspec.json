@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\dotnet\\algo\\algo.csproj": {}
+    "C:\\dotnet\\algo_bench_dotnet\\algo.csproj": {}
   },
   "projects": {
-    "C:\\dotnet\\algo\\algo.csproj": {
+    "C:\\dotnet\\algo_bench_dotnet\\algo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\dotnet\\algo\\algo.csproj",
+        "projectUniqueName": "C:\\dotnet\\algo_bench_dotnet\\algo.csproj",
         "projectName": "algo",
-        "projectPath": "C:\\dotnet\\algo\\algo.csproj",
+        "projectPath": "C:\\dotnet\\algo_bench_dotnet\\algo.csproj",
         "packagesPath": "C:\\Users\\ibrahim\\.nuget\\packages\\",
-        "outputPath": "C:\\dotnet\\algo\\obj\\",
+        "outputPath": "C:\\dotnet\\algo_bench_dotnet\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
