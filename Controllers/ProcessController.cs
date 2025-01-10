@@ -470,8 +470,41 @@ namespace AlgorithmProject.Controllers
         }
 
         [HttpGet]
-        public ActionResult Rapor()
+        [HttpGet]
+        public async Task<IActionResult> Rapor()
         {
+            // Tüm verileri çekiyoruz
+            var logs = await _context.AlgorithmLogs.ToListAsync();
+
+            // Verileri sınıflandırıyoruz
+            var groupedData = logs
+                .GroupBy(log => log.Algorithm)
+                .Select(algorithmGroup => new
+                {
+                    Algorithm = algorithmGroup.Key,
+                    ArrayTypes = algorithmGroup
+                        .GroupBy(log => log.ArrayType)
+                        .Select(arrayTypeGroup => new
+                        {
+                            ArrayType = arrayTypeGroup.Key,
+                            Sizes = arrayTypeGroup
+                                .GroupBy(log => log.ArraySize)
+                                .Select(sizeGroup => new
+                                {
+                                    ArraySize = sizeGroup.Key,
+                                    Data = sizeGroup.Select(log => new
+                                    {
+                                        log.TimeTaken,
+                                        log.AverageMemory,
+                                        log.AverageCpu
+                                    }).ToList()
+                                }).ToList()
+                        }).ToList()
+                }).ToList();
+
+            // Veriyi ViewBag ile View'a gönderiyoruz
+            ViewBag.GroupedData = groupedData;
+
             return View("Rapor");
         }
 

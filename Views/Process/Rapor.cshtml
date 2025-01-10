@@ -1,3 +1,6 @@
+@{
+    var groupedData = ViewBag.GroupedData;
+}
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -171,7 +174,49 @@
             </div>
         </div>
     </div>
-
+   <div class="container my-5">
+        @if (groupedData != null)
+        {
+            <ul>
+                @foreach (var algorithm in groupedData)
+                {
+                    <li>
+                        <strong>Algorithm:</strong> @algorithm.Algorithm
+                        <ul>
+                            @foreach (var arrayType in algorithm.ArrayTypes)
+                            {
+                                <li>
+                                    <strong>Array Type:</strong> @arrayType.ArrayType
+                                    <ul>
+                                        @foreach (var size in arrayType.Sizes)
+                                        {
+                                            <li>
+                                                <strong>Array Size:</strong> @size.ArraySize
+                                                <ul>
+                                                    @foreach (var data in size.Data)
+                                                    {
+                                                        <li>
+                                                            Time Taken: @data.TimeTaken ms,
+                                                            Avg. Memory: @data.AverageMemory MB,
+                                                            Avg. CPU: @data.AverageCpu%
+                                                        </li>
+                                                    }
+                                                </ul>
+                                            </li>
+                                        }
+                                    </ul>
+                                </li>
+                            }
+                        </ul>
+                    </li>
+                }
+            </ul>
+        }
+        else
+        {
+            <p>Veri bulunamadı.</p>
+        }
+   </div>
     <!-- ApexCharts Library -->
     <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
     <script>

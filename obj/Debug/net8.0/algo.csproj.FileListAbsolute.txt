@@ -224,7 +224,6 @@ C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\staticwebassets\msbuild.build.algo.
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.algo.props
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.algo.props
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\staticwebassets.pack.json
-C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\algo.csproj.Up2Date
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\algo.dll
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\refint\algo.dll
