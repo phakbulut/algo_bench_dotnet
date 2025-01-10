@@ -230,3 +230,4 @@ C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\refint\algo.dll
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\algo.pdb
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\algo.genruntimeconfig.cache
 C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\ref\algo.dll
+C:\dotnet\algo_bench_dotnet\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

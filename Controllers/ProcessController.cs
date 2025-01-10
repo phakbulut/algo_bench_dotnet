@@ -14,10 +14,11 @@ namespace AlgorithmProject.Controllers
 {
     public class ProcessController : Controller
     {
-        // GET: Process
+
         private readonly ApplicationDbContext _context; // _context burada sınıf seviyesinde tanımlandı
         private readonly List<AlgorithmLog> _logQueue; // Kuyruğumuzu bir liste olarak tanımlıyoruz
         private readonly int _batchSize = 5; // Veritabanına gönderilecek toplu veri sayısı
+    
 
         public ActionResult Index()
         {
@@ -38,7 +39,6 @@ namespace AlgorithmProject.Controllers
         {
             _context = context;
             _logQueue = new List<AlgorithmLog>();
-
         }
         // POST: Process/Execute
         [HttpPost]
@@ -350,126 +350,8 @@ namespace AlgorithmProject.Controllers
             while (i2 < n2)
                 arr[k++] = rightArray[i2++];
         }
-
-
-
-
-        [HttpPost]
-        public async Task<ActionResult> RunAllCombinations(int runCount)
-        {
-            var algorithms = new[] { "heap", "shell", "radix", "merge" };
-            var dataSizes = new[] { 1000, 10000, 100000 };
-            var orders = new[] { "random", "partially sorted", "reverse" };
-
-            var Results = new List<AlgorithmLog>();
-            var batchSize = 10;  // Kuyruğa eklenecek veri sayısı (batch size)
-
-            // En son çalıştırmaların sonuçlarını saklayacağız
-            for (int i = 0; i < runCount; i++)
-            {
-                foreach (var algorithm in algorithms)
-                {
-                    foreach (var dataSize in dataSizes)
-                    {
-                        foreach (var order in orders)
-                        {
-                            var result = ExecuteSingleCombination(algorithm, dataSize, order);
-                            Results.Add(result); // En son yapılan çalıştırmaları sakla
-
-                            // Kuyruğa ekledikçe belirli bir büyüklüğe ulaştığında veritabanına ekleyelim
-                            if (Results.Count >= batchSize)
-                            {
-                                // Veritabanına veri eklemek için ProcessQueue'i çağırıyoruz.
-                                await ProcessQueue(Results);
-                                Results.Clear();  // Kuyruğu temizliyoruz
-                            }
-                        }
-                    }
-                }
-            }
-
-            // Kuyruğun sonunda kalan verileri kaydet
-            if (Results.Count > 0)
-            {
-                await ProcessQueue(Results);  // Son kalan veriyi kaydediyoruz
-            }
-
-            // Sonuçları View'a gönderiyoruz
-            ViewBag.LatestResults = Results;
-            return View("Result2");
-        }
-
-        // Kuyruğu işleyip veritabanına topluca ekler
-        private async Task ProcessQueue(List<AlgorithmLog> results)
-        {
-            try
-            {
-                if (results.Any())
-                {
-                    _context.AlgorithmLogs.AddRange(results);  // Toplu insert
-                    await _context.SaveChangesAsync();
-                }
-            }
-            catch (Exception ex)
-            {
-                // Hata durumunda, loglama yapabilirsiniz
-                Console.WriteLine($"Veritabanına veri eklerken hata oluştu: {ex.Message}");
-            }
-        }
-        // Kuyruğu işleyip veritabanına topluca ekler
-
-        private AlgorithmLog ExecuteSingleCombination(string algorithm, int dataSize, string order)
-        {
-            int[] data = GenerateData(dataSize, order);
-            int[] originalData = (int[])data.Clone();
-
-            List<(double Time, double MemoryMB, double Cpu)> resourceUsage = new();
-            var stopwatch = Stopwatch.StartNew();
-
-            // Algoritma çalıştırma
-            switch (algorithm.ToLower())
-            {
-                case "quick":
-                    QuickSort(data, 0, data.Length - 1);
-                    break;
-                case "heap":
-                    HeapSort(data);
-                    break;
-                case "shell":
-                    ShellSort(data);
-                    break;
-                case "radix":
-                    RadixSort(data);
-                    break;
-                case "merge":
-                    MergeSort(data, 0, data.Length - 1);
-                    break;
-                default:
-                    throw new Exception("Geçersiz algoritma seçimi.");
-            }
-
-            stopwatch.Stop();
-            // Ortalama kaynak kullanımını hesapla
-            var averageMemory = resourceUsage.Any() ? Math.Round(resourceUsage.Average(r => r.MemoryMB), 2) : 0;
-            var averageCpu = resourceUsage.Any() ? Math.Round(resourceUsage.Average(r => r.Cpu), 2) : 0;
-            var averageTime = resourceUsage.Any() ? Math.Round(resourceUsage.Average(r => r.Time), 2) : 0;
-
-
-            var algorithmLog = new AlgorithmLog
-            {
-                Algorithm = algorithm,
-                ArrayType = order,
-                ArraySize = dataSize,
-                TimeTaken = stopwatch.Elapsed.TotalMilliseconds,
-                AverageMemory = averageMemory,
-                AverageCpu = averageCpu,
-                AverageTime = averageTime,
-            };
-
-            return algorithmLog;
-        }
-
-        [HttpGet]
+        
+        
         [HttpGet]
         public async Task<IActionResult> Rapor()
         {
@@ -508,6 +390,7 @@ namespace AlgorithmProject.Controllers
             return View("Rapor");
         }
 
+      
 
     }
 }
