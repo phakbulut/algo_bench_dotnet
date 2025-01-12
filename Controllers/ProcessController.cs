@@ -18,7 +18,7 @@ namespace AlgorithmProject.Controllers
         private readonly ApplicationDbContext _context; // _context burada sınıf seviyesinde tanımlandı
         private readonly List<AlgorithmLog> _logQueue; // Kuyruğumuzu bir liste olarak tanımlıyoruz
         private readonly int _batchSize = 5; // Veritabanına gönderilecek toplu veri sayısı
-    
+
 
         public ActionResult Index()
         {
@@ -350,15 +350,15 @@ namespace AlgorithmProject.Controllers
             while (i2 < n2)
                 arr[k++] = rightArray[i2++];
         }
-        
-        
-        [HttpGet]
-        public async Task<IActionResult> Rapor()
-        {
-            // Tüm verileri çekiyoruz
-            var logs = await _context.AlgorithmLogs.ToListAsync();
 
-            // Verileri sınıflandırıyoruz
+
+        [HttpGet]
+        public IActionResult Rapor()
+        {
+            // Tüm verileri senkron şekilde çekiyoruz
+            var logs = _context.AlgorithmLogs.ToList();
+
+            // Verileri sınıflandırıyoruz ve "best", "worst", "average" hesaplıyoruz
             var groupedData = logs
                 .GroupBy(log => log.Algorithm)
                 .Select(algorithmGroup => new
@@ -374,23 +374,51 @@ namespace AlgorithmProject.Controllers
                                 .Select(sizeGroup => new
                                 {
                                     ArraySize = sizeGroup.Key,
-                                    Data = sizeGroup.Select(log => new
-                                    {
-                                        log.TimeTaken,
-                                        log.AverageMemory,
-                                        log.AverageCpu
-                                    }).ToList()
+                                    AverageTime = sizeGroup.Average(log => log.TimeTaken),
+                                    BestTime = sizeGroup.Min(log => log.TimeTaken),
+                                    WorstTime = sizeGroup.Max(log => log.TimeTaken),
+                                    AverageMemory = sizeGroup.Average(log => log.AverageMemory),
+                                    BestMemory = sizeGroup.Min(log => log.AverageMemory),
+                                    WorstMemory = sizeGroup.Max(log => log.AverageMemory),
+                                    AverageCpu = sizeGroup.Average(log => log.AverageCpu),
+                                    BestCpu = sizeGroup.Min(log => log.AverageCpu),
+                                    WorstCpu = sizeGroup.Max(log => log.AverageCpu)
                                 }).ToList()
                         }).ToList()
                 }).ToList();
 
+            // İlk tablo için özet verileri hazırlıyoruz
+            var tableData = logs
+                .GroupBy(log => new { log.Algorithm, log.ArrayType, log.ArraySize })
+                .Select(group => new
+                {
+                    Algorithm = group.Key.Algorithm,
+                    ArrayType = group.Key.ArrayType,
+                    ArraySize = group.Key.ArraySize,
+                    AverageTime = group.Average(log => log.TimeTaken),
+                    BestTime = group.Min(log => log.TimeTaken),
+                    WorstTime = group.Max(log => log.TimeTaken),
+                    AverageMemory = group.Average(log => log.AverageMemory),
+                    BestMemory = group.Min(log => log.AverageMemory),
+                    WorstMemory = group.Max(log => log.AverageMemory),
+                    AverageCpu = group.Average(log => log.AverageCpu),
+                    BestCpu = group.Min(log => log.AverageCpu),
+                    WorstCpu = group.Max(log => log.AverageCpu)
+                }).ToList();
+
             // Veriyi ViewBag ile View'a gönderiyoruz
-            ViewBag.GroupedData = groupedData;
+            ViewBag.GroupedData = groupedData; // ApexCharts JSON Verisi
+            ViewBag.TableData = tableData;     // İlk tablo için veriler
+
+            // Laravel'deki "dd()" benzeri çıktıyı görmek için
+            Console.WriteLine("Grouped Data (ApexCharts):");
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(groupedData));
+            Console.WriteLine("Table Data (Tablo):");
+            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(tableData));
 
             return View("Rapor");
         }
 
-      
 
     }
 }
