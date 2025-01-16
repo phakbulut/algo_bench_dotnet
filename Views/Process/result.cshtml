@@ -2,43 +2,146 @@
     ViewBag.Title = "Sonuç";
 }
 
-<h2>Algoritma Sonuçları</h2>
-
-<div>
-    <h3>Algoritma: @ViewBag.Algorithm</h3>
-    <p>Array Type: @ViewBag.ArrayType</p>
-    <p>Array Size: @ViewBag.ArraySize</p>
-    <p>Time Taken: @ViewBag.TimeTaken ms</p>
-
-    <h4>Orijinal Dizi:</h4>
-    <pre>@string.Join(", ", ViewBag.OriginalArray)</pre>
-
-    <h4>Sıralanmış Dizi:</h4>
-    <pre>@string.Join(", ", ViewBag.SortedArray)</pre>
-</div>
-
-<h3>Kaynak Kullanımı</h3>
-<table border="1" cellpadding="5">
-    <thead>
-        <tr>
-            <th>Zaman (s)</th>
-            <th>Hafıza (MB)</th>
-            <th>CPU Kullanımı (%)</th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var usage in ViewBag.ResourceUsage)
-        {
-            <tr>
-                <td>@usage.Item1</td> <!-- Zaman -->
-                <td>@string.Format("{0:F6}", usage.Item2)</td> <!-- Hafıza (MB) -->
-                <td>@usage.Item3</td> <!-- CPU Kullanımı -->
-            </tr>
+@section Styles {
+    <style>
+        .result-container {
+            max-width: 1200px;
+            margin: 30px auto;
+            padding: 20px;
         }
-    </tbody>
-</table>
 
-<h4>Ortalama Kaynak Kullanımı</h4>
-<p>Zaman (s): @string.Format("{0:F6}", ViewBag.AverageTime)</p>
-<p>Hafıza (MB): @string.Format("{0:F6}", ViewBag.AverageMemory)</p>
-<p>CPU Kullanımı (%): @string.Format("{0:F6}", ViewBag.AverageCpu)</p>
+        .array-display {
+            background-color: #f8f9fa;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: monospace;
+            /* Yatay scroll için eklenen özellikler */
+            max-height: 100px;
+            overflow-x: auto;
+            overflow-y: hidden;
+            white-space: nowrap;
+            scrollbar-width: thin;
+        }
+            /* Scroll bar stilleri */
+            .array-display::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .array-display::-webkit-scrollbar-track {
+                background: #f1f1f1;
+                border-radius: 4px;
+            }
+
+            .array-display::-webkit-scrollbar-thumb {
+                background: #888;
+                border-radius: 4px;
+            }
+
+                .array-display::-webkit-scrollbar-thumb:hover {
+                    background: #555;
+                }
+
+        .card {
+            margin-bottom: 20px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .table {
+            margin-bottom: 0;
+        }
+
+        .metric-value {
+            font-weight: 500;
+            color: #2c3e50;
+        }
+
+        .table th {
+            background-color: #f8f9fa;
+        }
+
+        .average-metrics {
+            background-color: #e9ecef;
+            padding: 15px;
+            border-radius: 5px;
+            margin-top: 20px;
+        }
+    </style>
+}
+<div class="result-container">
+    <h2 class="mb-4">Algoritma Sonuçları</h2>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h3 class="card-title">Algoritma: <span class="metric-value">@ViewBag.Algorithm</span></h3>
+            <div class="row">
+                <div class="col-md-4">
+                    <p>Array Type: <span class="metric-value">@ViewBag.ArrayType</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Array Size: <span class="metric-value">@ViewBag.ArraySize</span></p>
+                </div>
+                <div class="col-md-4">
+                    <p>Time Taken: <span class="metric-value">@ViewBag.TimeTaken ms</span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="card mb-4">
+        <div class="card-body">
+            <h4 class="card-title">Orijinal Dizi:</h4>
+            <div class="array-display">
+                @string.Join(", ", ViewBag.OriginalArray)
+            </div>
+
+            <h4 class="card-title mt-4">Sıralanmış Dizi:</h4>
+            <div class="array-display">
+                @string.Join(", ", ViewBag.SortedArray)
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-body">
+            <h3 class="card-title mb-4">Kaynak Kullanımı</h3>
+
+            <div class="table-responsive">
+                <table class="table table-striped table-bordered">
+                    <thead>
+                        <tr>
+                            <th>Zaman (s)</th>
+                            <th>Hafıza (MB)</th>
+                            <th>CPU Kullanımı (%)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach (var usage in ViewBag.ResourceUsage)
+                        {
+                            <tr>
+                                <td>@usage.Item1</td>
+                                <td>@string.Format("{0:F6}", usage.Item2)</td>
+                                <td>@usage.Item3</td>
+                            </tr>
+                        }
+                    </tbody>
+                </table>
+            </div>
+
+            <div class="average-metrics mt-4">
+                <h4 class="mb-3">Ortalama Kaynak Kullanımı</h4>
+                <div class="row">
+                    <div class="col-md-4">
+                        <p>Zaman (s): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageTime)</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>Hafıza (MB): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageMemory)</span></p>
+                    </div>
+                    <div class="col-md-4">
+                        <p>CPU Kullanımı (%): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageCpu)</span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

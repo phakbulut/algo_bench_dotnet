@@ -1,39 +1,85 @@
 ﻿@{
     ViewBag.Title = "Select Algorithm";
 }
-
-<h2>Select Algorithm</h2>
-
-@using (Html.BeginForm("Execute", "Process", FormMethod.Post))
-{
-    <div>
-        <label for="algorithm">Select Algorithm:</label>
-        <select name="algorithm" id="algorithm">
-            <option value="quick">Quick Sort</option>
-            <option value="heap">Heap Sort</option>
-            <option value="shell">Shell Sort</option>
-            <option value="radix">Radix Sort</option>
-            <option value="merge">Merge Sort</option>
-        </select>
-    </div>
-    <div>
-        <label for="dataSize">Select Data Size:</label>
-        <select name="dataSize" id="dataSize">
-            <option value="1000">1k</option>
-            <option value="10000">10k</option>
-            <option value="100000">100k</option>
-        </select>
-    </div>
-    <div>
-        <label for="order">Select Order:</label>
-        <select name="order" id="order">
-            <option value="random">Random</option>
-            <option value="partially sorted">partially sorted</option>
-            <option value="reverse">Reverse</option>
-        </select>
-    </div>
-    <button type="submit">Run Algorithm</button>
+@section Styles {
+<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+<style>
+    .form-container {
+        max-width: 600px;
+        margin: 50px auto;
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 15px rgba(0,0,0,0.1);
+        background-color: #fff;
+    }
+    .page-title {
+        color: #2c3e50;
+        margin-bottom: 30px;
+        text-align: center;
+    }
+    .form-group {
+        margin-bottom: 20px;
+    }
+    .btn-run {
+        width: 100%;
+        padding: 12px;
+        font-size: 16px;
+        margin-top: 20px;
+    }
+    .report-link {
+        display: block;
+        text-align: center;
+        margin-top: 20px;
+        color: #3498db;
+        text-decoration: none;
+    }
+    .report-link:hover {
+        color: #2980b9;
+    }
+    body {
+        background-color: #f8f9fa;
+        padding: 20px;
+    }
+</style>
 }
+<div class="container">
+    <div class="form-container">
+        <h2 class="page-title">@ViewBag.Title</h2>
 
-<a href="@Url.Action("Rapor", "Process")">Rapor</a>
+        @using (Html.BeginForm("Execute", "Process", FormMethod.Post))
+        {
+            <div class="form-group">
+                <label for="algorithm" class="form-label">Algoritma Seçin:</label>
+                <select class="form-select" name="algorithm" id="algorithm">
+                    <option value="quick">Quick Sort</option>
+                    <option value="heap">Heap Sort</option>
+                    <option value="shell">Shell Sort</option>
+                    <option value="radix">Radix Sort</option>
+                    <option value="merge">Merge Sort</option>
+                </select>
+            </div>
 
+            <div class="form-group">
+                <label for="dataSize" class="form-label">Veri Boyutu:</label>
+                <select class="form-select" name="dataSize" id="dataSize">
+                    <option value="1000">1k</option>
+                    <option value="10000">10k</option>
+                    <option value="100000">100k</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label for="order" class="form-label">Sıralama Türü:</label>
+                <select class="form-select" name="order" id="order">
+                    <option value="random">Random</option>
+                    <option value="partially sorted">Partially Sorted</option>
+                    <option value="reverse">Reverse</option>
+                </select>
+            </div>
+
+            <button type="submit" class="btn btn-primary btn-run">Algoritmayı Çalıştır</button>
+        }
+
+        <a href="@Url.Action("Rapor", "Process")" class="report-link">Raporu Görüntüle</a>
+    </div>
+</div>

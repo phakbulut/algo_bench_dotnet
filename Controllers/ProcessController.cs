@@ -437,6 +437,8 @@ namespace AlgorithmProject.Controllers
                     }
                 }
             }
+            ViewBag.JsonData = JsonConvert.SerializeObject(viewModel);
+
             // View'e model olarak gönderiyoruz
             return View(viewModel);
         }

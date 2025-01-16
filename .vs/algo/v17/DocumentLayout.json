@@ -3,24 +3,24 @@
   "WorkspaceRootPath": "C:\\dotnet\\algo_bench_dotnet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\rapor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\rapor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\result2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\result2.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -30,32 +30,33 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "result2.cshtml",
-              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\result2.cshtml",
-              "RelativeDocumentMoniker": "Views\\Process\\result2.cshtml",
-              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\result2.cshtml",
-              "RelativeToolTip": "Views\\Process\\result2.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAB4AAAAAAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "result.cshtml",
+              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\result.cshtml",
+              "RelativeDocumentMoniker": "Views\\Process\\result.cshtml",
+              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\result.cshtml",
+              "RelativeToolTip": "Views\\Process\\result.cshtml",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAiwIAAAAASAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-16T21:21:15.639Z",
+              "WhenOpened": "2025-01-16T22:49:09.766Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 1,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Process\\Index.cshtml",
               "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Index.cshtml",
               "RelativeToolTip": "Views\\Process\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABAAAAARAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-12T21:31:39.894Z"
+              "WhenOpened": "2025-01-12T21:31:39.894Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -65,32 +66,33 @@
               "RelativeDocumentMoniker": "Program.cs",
               "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Program.cs",
               "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAADwvyQAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAADwvyQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-01-10T22:57:06.202Z"
+              "WhenOpened": "2025-01-10T22:57:06.202Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Rapor.cshtml",
               "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Rapor.cshtml",
               "RelativeDocumentMoniker": "Views\\Process\\Rapor.cshtml",
               "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Rapor.cshtml",
               "RelativeToolTip": "Views\\Process\\Rapor.cshtml",
-              "ViewState": "AgIAACoBAAAAAAAAAAAIwGcBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAACoBAAAAAAAAAAAAAGgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-10T19:47:35.763Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 4,
               "Title": "ProcessController.cs",
               "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Controllers\\ProcessController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProcessController.cs",
               "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Controllers\\ProcessController.cs",
               "RelativeToolTip": "Controllers\\ProcessController.cs",
-              "ViewState": "AgIAAIcBAAAAAAAAAAAIwLIBAAAzAAAAAAAAAA==",
+              "ViewState": "AgIAAKIBAAAAAAAAAAAIwLgBAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-25T15:00:06.026Z",
               "EditorCaption": ""
