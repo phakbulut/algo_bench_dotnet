@@ -1,6 +1,10 @@
 @{
-    var groupedData = ViewBag.GroupedData;
+    var allData = (Dictionary<string, dynamic>)ViewBag.AllData;
+
+ 
 }
+@model List<algo.ViewModels.AlgorithmReportViewModel>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -29,61 +33,47 @@
                     <thead class="table-dark">
                         <tr>
                             <th>Algorithm</th>
+                            <th>Array Type</th>
+                            <th>Array Size</th>
+                            <th>Execution Count</th>
                             <th>Theoretical Best Case</th>
                             <th>Theoretical Average Case</th>
                             <th>Theoretical Worst Case</th>
-                            <th>Experimental Best Case (ms)</th>
-                            <th>Experimental Average Case (ms)</th>
-                            <th>Experimental Worst Case (ms)</th>
+                            <th>Average Time (ms)</th>
+                            <th>Best Time (ms)</th>
+                            <th>Worst Time (ms)</th>
+                            <th>Average Memory (MB)</th>
+                            <th>Best Memory (MB)</th>
+                            <th>Worst Memory (MB)</th>
+                            <th>Average CPU (%)</th>
+                            <th>Best CPU (%)</th>
+                            <th>Worst CPU (%)</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr>
-                            <td>Quick Sort</td>
-                            <td>O(n log n)</td>
-                            <td>O(n log n)</td>
-                            <td>O(n²)</td>
-                            <td>15</td>
-                            <td>30</td>
-                            <td>120</td>
-                        </tr>
-                        <tr>
-                            <td>Heap Sort</td>
-                            <td>O(n log n)</td>
-                            <td>O(n log n)</td>
-                            <td>O(n log n)</td>
-                            <td>20</td>
-                            <td>40</td>
-                            <td>100</td>
-                        </tr>
-                        <tr>
-                            <td>Merge Sort</td>
-                            <td>O(n log n)</td>
-                            <td>O(n log n)</td>
-                            <td>O(n log n)</td>
-                            <td>18</td>
-                            <td>35</td>
-                            <td>90</td>
-                        </tr>
-                        <tr>
-                            <td>Radix Sort</td>
-                            <td>O(nk)</td>
-                            <td>O(nk)</td>
-                            <td>O(nk)</td>
-                            <td>25</td>
-                            <td>50</td>
-                            <td>110</td>
-                        </tr>
-                        <tr>
-                            <td>Shell Sort</td>
-                            <td>O(n log² n)</td>
-                            <td>O(n log² n)</td>
-                            <td>O(n²)</td>
-                            <td>30</td>
-                            <td>60</td>
-                            <td>150</td>
-                        </tr>
+                        @foreach (var item in Model)
+                        {
+                            <tr>
+                                <td>@item.Algorithm</td>
+                                <td>@item.ArrayType</td>
+                                <td>@item.ArraySize</td>
+                                <td>@item.ExecutionCount</td>
+                                <td>@item.TheoreticalBestCase</td>
+                                <td>@item.TheoreticalAverageCase</td>
+                                <td>@item.TheoreticalWorstCase</td>
+                                <td>@item.AverageTime</td>
+                                <td>@item.BestTime</td>
+                                <td>@item.WorstTime</td>
+                                <td>@item.AverageMemory</td>
+                                <td>@item.BestMemory</td>
+                                <td>@item.WorstMemory</td>
+                                <td>@item.AverageCpu</td>
+                                <td>@item.BestCpu</td>
+                                <td>@item.WorstCpu</td>
+                            </tr>
+                        }
                     </tbody>
+
                 </table>
             </div>
             <!-- Explanation Section -->
@@ -192,49 +182,7 @@
     </div>
     <div id="page-3">
 
-        <div class="container my-5">
-            @if (groupedData != null)
-            {
-                    <ul>
-                    @foreach (var algorithm in groupedData)
-                    {
-                                <li>
-                                    <strong>Algorithm:</strong> @algorithm.Algorithm
-                                    <ul>
-                                @foreach (var arrayType in algorithm.ArrayTypes)
-                                {
-                                                <li>
-                                                    <strong>Array Type:</strong> @arrayType.ArrayType
-                                                    <ul>
-                                            @foreach (var size in arrayType.Sizes)
-                                            {
-                                                                <li>
-                                                                    <strong>Array Size:</strong> @size.ArraySize
-                                                                    <ul>
-                                                        @foreach (var data in size.Data)
-                                                        {
-                                                                                <li>
-                                                                                    Time Taken: @data.TimeTaken ms,
-                                                                                    Avg. Memory: @data.AverageMemory MB,
-                                                                                    Avg. CPU: @data.AverageCpu%
-                                                                                </li>
-                                                        }
-                                                                    </ul>
-                                                                </li>
-                                            }
-                                                    </ul>
-                                                </li>
-                                }
-                                    </ul>
-                                </li>
-                    }
-                    </ul>
-            }
-            else
-            {
-                    <p>Veri bulunamadı.</p>
-            }
-        </div>
+        
 
     </div>
 

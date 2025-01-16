@@ -9,7 +9,7 @@ using Newtonsoft.Json;
 using algo.Data;
 using Microsoft.EntityFrameworkCore;
 using AlgorithmProject.Data;
-
+using algo.ViewModels;
 namespace AlgorithmProject.Controllers
 {
     public class ProcessController : Controller
@@ -117,7 +117,6 @@ namespace AlgorithmProject.Controllers
                 TimeTaken = stopwatch.Elapsed.TotalMilliseconds,
                 AverageMemory = averageMemory,
                 AverageCpu = averageCpu,
-                AverageTime = averageTime,
             };
 
             _context.AlgorithmLogs.Add(algorithmLog);
@@ -352,71 +351,72 @@ namespace AlgorithmProject.Controllers
         }
 
 
-        [HttpGet]
         public IActionResult Rapor()
         {
-            // Tüm verileri senkron şekilde çekiyoruz
+            // Tüm verileri çekiyoruz
             var logs = _context.AlgorithmLogs.ToList();
 
-            // Verileri sınıflandırıyoruz ve "best", "worst", "average" hesaplıyoruz
-            var groupedData = logs
-                .GroupBy(log => log.Algorithm)
-                .Select(algorithmGroup => new
+            // Algoritmalar için teorik değerler
+            var theoreticalData = new Dictionary<string, (string BestCase, string AverageCase, string WorstCase)>
+    {
+        { "quick", ("O(n log n)", "O(n log n)", "O(n²)") },
+        { "heap", ("O(n log n)", "O(n log n)", "O(n log n)") },
+        { "shell", ("O(n log² n)", "O(n log² n)", "O(n²)") },
+        { "merge", ("O(n log n)", "O(n log n)", "O(n log n)") },
+        { "radix", ("O(nk)", "O(nk)", "O(nk)") }
+    };
+
+            // Tüm kombinasyonlar için bir liste hazırlıyoruz
+            var algorithms = new[] { "quick", "heap", "shell", "merge", "radix" };
+            var arrayTypes = new[] { "random", "partially sorted", "reverse" };
+            var arraySizes = new[] { 1000, 10000, 100000 };
+
+            // Kombinasyonları tek tek hesaplıyoruz ve ViewModel'e dönüştürüyoruz
+            var viewModel = new List<AlgorithmReportViewModel>();
+
+            foreach (var algorithm in algorithms)
+            {
+                foreach (var arrayType in arrayTypes)
                 {
-                    Algorithm = algorithmGroup.Key,
-                    ArrayTypes = algorithmGroup
-                        .GroupBy(log => log.ArrayType)
-                        .Select(arrayTypeGroup => new
+                    foreach (var arraySize in arraySizes)
+                    {
+                        // İlgili verileri filtreliyoruz
+                        var filteredLogs = logs
+                            .Where(log => log.Algorithm == algorithm &&
+                                          log.ArrayType == arrayType &&
+                                          log.ArraySize == arraySize)
+                            .ToList();
+
+                        // Veriler yoksa atlıyoruz
+                        if (!filteredLogs.Any())
+                            continue;
+
+                        // ViewModel için bir nesne oluşturuyoruz
+                        viewModel.Add(new AlgorithmReportViewModel
                         {
-                            ArrayType = arrayTypeGroup.Key,
-                            Sizes = arrayTypeGroup
-                                .GroupBy(log => log.ArraySize)
-                                .Select(sizeGroup => new
-                                {
-                                    ArraySize = sizeGroup.Key,
-                                    AverageTime = sizeGroup.Average(log => log.TimeTaken),
-                                    BestTime = sizeGroup.Min(log => log.TimeTaken),
-                                    WorstTime = sizeGroup.Max(log => log.TimeTaken),
-                                    AverageMemory = sizeGroup.Average(log => log.AverageMemory),
-                                    BestMemory = sizeGroup.Min(log => log.AverageMemory),
-                                    WorstMemory = sizeGroup.Max(log => log.AverageMemory),
-                                    AverageCpu = sizeGroup.Average(log => log.AverageCpu),
-                                    BestCpu = sizeGroup.Min(log => log.AverageCpu),
-                                    WorstCpu = sizeGroup.Max(log => log.AverageCpu)
-                                }).ToList()
-                        }).ToList()
-                }).ToList();
+                            Algorithm = algorithm,
+                            ArrayType = arrayType,
+                            ArraySize = arraySize.ToString(),
+                            AverageTime = Math.Round(filteredLogs.Average(log => log.TimeTaken), 3),
+                            BestTime = Math.Round(filteredLogs.Min(log => log.TimeTaken), 3),
+                            WorstTime = Math.Round(filteredLogs.Max(log => log.TimeTaken), 3),
+                            AverageMemory = Math.Round(filteredLogs.Average(log => log.AverageMemory), 3),
+                            BestMemory = Math.Round(filteredLogs.Min(log => log.AverageMemory), 3),
+                            WorstMemory = Math.Round(filteredLogs.Max(log => log.AverageMemory), 3),
+                            AverageCpu = Math.Round(filteredLogs.Average(log => log.AverageCpu), 3),
+                            BestCpu = Math.Round(filteredLogs.Min(log => log.AverageCpu), 3),
+                            WorstCpu = Math.Round(filteredLogs.Max(log => log.AverageCpu), 3),
+                            ExecutionCount = filteredLogs.Count, // Çalıştırma sayısı
+                            TheoreticalBestCase = theoreticalData[algorithm].BestCase, // Teorik veriler
+                            TheoreticalAverageCase = theoreticalData[algorithm].AverageCase,
+                            TheoreticalWorstCase = theoreticalData[algorithm].WorstCase
+                        });
+                    }
+                }
+            }
 
-            // İlk tablo için özet verileri hazırlıyoruz
-            var tableData = logs
-                .GroupBy(log => new { log.Algorithm, log.ArrayType, log.ArraySize })
-                .Select(group => new
-                {
-                    Algorithm = group.Key.Algorithm,
-                    ArrayType = group.Key.ArrayType,
-                    ArraySize = group.Key.ArraySize,
-                    AverageTime = group.Average(log => log.TimeTaken),
-                    BestTime = group.Min(log => log.TimeTaken),
-                    WorstTime = group.Max(log => log.TimeTaken),
-                    AverageMemory = group.Average(log => log.AverageMemory),
-                    BestMemory = group.Min(log => log.AverageMemory),
-                    WorstMemory = group.Max(log => log.AverageMemory),
-                    AverageCpu = group.Average(log => log.AverageCpu),
-                    BestCpu = group.Min(log => log.AverageCpu),
-                    WorstCpu = group.Max(log => log.AverageCpu)
-                }).ToList();
-
-            // Veriyi ViewBag ile View'a gönderiyoruz
-            ViewBag.GroupedData = groupedData; // ApexCharts JSON Verisi
-            ViewBag.TableData = tableData;     // İlk tablo için veriler
-
-            // Laravel'deki "dd()" benzeri çıktıyı görmek için
-            Console.WriteLine("Grouped Data (ApexCharts):");
-            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(groupedData));
-            Console.WriteLine("Table Data (Tablo):");
-            Console.WriteLine(System.Text.Json.JsonSerializer.Serialize(tableData));
-
-            return View("Rapor");
+            // View'e model olarak gönderiyoruz
+            return View(viewModel);
         }
 
 
