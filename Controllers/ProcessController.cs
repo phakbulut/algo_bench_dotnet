@@ -371,7 +371,6 @@ namespace AlgorithmProject.Controllers
             var arrayTypes = new[] { "random", "partially sorted", "reverse" };
             var arraySizes = new[] { 1000, 10000, 100000 };
 
-            // Kombinasyonları tek tek hesaplıyoruz ve ViewModel'e dönüştürüyoruz
             var viewModel = new List<AlgorithmReportViewModel>();
 
             foreach (var algorithm in algorithms)
@@ -380,7 +379,6 @@ namespace AlgorithmProject.Controllers
                 {
                     foreach (var arraySize in arraySizes)
                     {
-                        // İlgili verileri filtreliyoruz
                         var filteredLogs = logs
                             .Where(log => log.Algorithm == algorithm &&
                                           log.ArrayType == arrayType &&
@@ -391,6 +389,30 @@ namespace AlgorithmProject.Controllers
                         if (!filteredLogs.Any())
                             continue;
 
+                        // Invalid ölçümleri kontrol etmek için sayacı başlatıyoruz
+                        int invalidMeasurementCount = 0;
+
+                        // Her değeri kontrol ediyoruz ve sıfır olanları sayıyoruz
+                        double averageMemory = filteredLogs.Average(log => log.AverageMemory);
+                        if (averageMemory == 0)
+                            invalidMeasurementCount++;
+
+                        double averageCpu = filteredLogs.Average(log => log.AverageCpu);
+                        if (averageCpu == 0)
+                            invalidMeasurementCount++;
+
+                        // Geçersiz ölçümleri içermeyen en iyi, en kötü ve ortalama hesaplamalar
+                        var validMemoryLogs = filteredLogs.Where(log => log.AverageMemory > 0).ToList();
+                        var validCpuLogs = filteredLogs.Where(log => log.AverageCpu > 0).ToList();
+
+                        // Eğer geçerli bellek verileri varsa, en iyi ve en kötü değeri hesaplıyoruz
+                        double bestMemory = validMemoryLogs.Any() ? validMemoryLogs.Min(log => log.AverageMemory) : 0;
+                        double worstMemory = validMemoryLogs.Any() ? validMemoryLogs.Max(log => log.AverageMemory) : 0;
+
+                        // Eğer geçerli CPU verileri varsa, en iyi ve en kötü değeri hesaplıyoruz
+                        double bestCpu = validCpuLogs.Any() ? validCpuLogs.Min(log => log.AverageCpu) : 0;
+                        double worstCpu = validCpuLogs.Any() ? validCpuLogs.Max(log => log.AverageCpu) : 0;
+
                         // ViewModel için bir nesne oluşturuyoruz
                         viewModel.Add(new AlgorithmReportViewModel
                         {
@@ -400,25 +422,24 @@ namespace AlgorithmProject.Controllers
                             AverageTime = Math.Round(filteredLogs.Average(log => log.TimeTaken), 3),
                             BestTime = Math.Round(filteredLogs.Min(log => log.TimeTaken), 3),
                             WorstTime = Math.Round(filteredLogs.Max(log => log.TimeTaken), 3),
-                            AverageMemory = Math.Round(filteredLogs.Average(log => log.AverageMemory), 3),
-                            BestMemory = Math.Round(filteredLogs.Min(log => log.AverageMemory), 3),
-                            WorstMemory = Math.Round(filteredLogs.Max(log => log.AverageMemory), 3),
-                            AverageCpu = Math.Round(filteredLogs.Average(log => log.AverageCpu), 3),
-                            BestCpu = Math.Round(filteredLogs.Min(log => log.AverageCpu), 3),
-                            WorstCpu = Math.Round(filteredLogs.Max(log => log.AverageCpu), 3),
+                            AverageMemory = Math.Round(averageMemory, 3),
+                            BestMemory = Math.Round(bestMemory, 3),
+                            WorstMemory = Math.Round(worstMemory, 3),
+                            AverageCpu = Math.Round(averageCpu, 3),
+                            BestCpu = Math.Round(bestCpu, 3),
+                            WorstCpu = Math.Round(worstCpu, 3),
                             ExecutionCount = filteredLogs.Count, // Çalıştırma sayısı
                             TheoreticalBestCase = theoreticalData[algorithm].BestCase, // Teorik veriler
                             TheoreticalAverageCase = theoreticalData[algorithm].AverageCase,
-                            TheoreticalWorstCase = theoreticalData[algorithm].WorstCase
+                            TheoreticalWorstCase = theoreticalData[algorithm].WorstCase,
+                            InvalidMeasurementCount = invalidMeasurementCount // Geçersiz ölçüm sayısı
                         });
                     }
                 }
             }
-
             // View'e model olarak gönderiyoruz
             return View(viewModel);
         }
-
 
     }
 }

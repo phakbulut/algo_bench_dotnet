@@ -10,7 +10,6 @@
         public double TimeTaken { get; set; }
         public double AverageMemory { get; set; }
         public double AverageCpu { get; set; }
-        public double AverageTime { get; set; }
     }
 
 }
