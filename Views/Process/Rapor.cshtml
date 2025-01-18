@@ -22,164 +22,149 @@
         </p>
         <div class="table-responsive">
             <div class="tabs">
-                <!-- Tab Menüsü -->
-                <ul class="nav nav-tabs" id="arrayTabs" role="tablist">
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link active" id="tab-1k" data-bs-toggle="tab" href="#array-1k" role="tab"
-                           aria-controls="array-1k" aria-selected="true">1K</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="tab-10k" data-bs-toggle="tab" href="#array-10k" role="tab"
-                           aria-controls="array-10k" aria-selected="false">10K</a>
-                    </li>
-                    <li class="nav-item" role="presentation">
-                        <a class="nav-link" id="tab-100k" data-bs-toggle="tab" href="#array-100k" role="tab"
-                           aria-controls="array-100k" aria-selected="false">100K</a>
-                    </li>
-                </ul>
+                <div class="table-responsive">
+                    <!-- 1K Array Tablosu -->
+                    <div class="mt-3">
+                        <h3 class="text-center">1K</h3>
+                        <table class="table table-bordered table-striped text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Algorithm</th>
+                                    <th>Array Type</th>
+                                    <th>Execution Count</th>
+                                    <th>Theoretical Best Case</th>
+                                    <th>Theoretical Average Case</th>
+                                    <th>Theoretical Worst Case</th>
+                                    <th>Average Time (ms)</th>
+                                    <th>Best Time (ms)</th>
+                                    <th>Worst Time (ms)</th>
+                                    <th>Average Memory (MB)</th>
+                                    <th>Best Memory (MB)</th>
+                                    <th>Worst Memory (MB)</th>
+                                    <th>Average CPU (%)</th>
+                                    <th>Best CPU (%)</th>
+                                    <th>Worst CPU (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Where(m => m.ArraySize == "1000"))
+                                {
+                                    <tr>
+                                        <td>@item.Algorithm</td>
+                                        <td>@item.ArrayType</td>
+                                        <td>@item.ExecutionCount</td>
+                                        <td>@item.TheoreticalBestCase</td>
+                                        <td>@item.TheoreticalAverageCase</td>
+                                        <td>@item.TheoreticalWorstCase</td>
+                                        <td>@item.AverageTime</td>
+                                        <td>@item.BestTime</td>
+                                        <td>@item.WorstTime</td>
+                                        <td>@item.AverageMemory</td>
+                                        <td>@item.BestMemory</td>
+                                        <td>@item.WorstMemory</td>
+                                        <td>@item.AverageCpu</td>
+                                        <td>@item.BestCpu</td>
+                                        <td>@item.WorstCpu</td>
+                                    </tr>
+                                }
+                            </tbody>
+                        </table>
+                    </div>
 
-                <!-- Tab İçerikleri -->
-                <div class="tab-content mt-3" id="arrayTabsContent">
-                    <div class="tab-pane fade show active" id="array-1k" role="tabpanel" aria-labelledby="tab-1k">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped text-center">
-                                <thead class="table-dark">
+                    <!-- 10K Array Tablosu -->
+                    <div class="mt-3">
+                        <h3 class="text-center">10K</h3>
+                        <table class="table table-bordered table-striped text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Algorithm</th>
+                                    <th>Array Type</th>
+                                    <th>Execution Count</th>
+                                    <th>Theoretical Best Case</th>
+                                    <th>Theoretical Average Case</th>
+                                    <th>Theoretical Worst Case</th>
+                                    <th>Average Time (ms)</th>
+                                    <th>Best Time (ms)</th>
+                                    <th>Worst Time (ms)</th>
+                                    <th>Average Memory (MB)</th>
+                                    <th>Best Memory (MB)</th>
+                                    <th>Worst Memory (MB)</th>
+                                    <th>Average CPU (%)</th>
+                                    <th>Best CPU (%)</th>
+                                    <th>Worst CPU (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Where(m => m.ArraySize == "10000"))
+                                {
                                     <tr>
-                                        <th>Algorithm</th>
-                                        <th>Array Type</th>
-                                        <th>Execution Count</th>
-                                        <th>Theoretical Best Case</th>
-                                        <th>Theoretical Average Case</th>
-                                        <th>Theoretical Worst Case</th>
-                                        <th>Average Time (ms)</th>
-                                        <th>Best Time (ms)</th>
-                                        <th>Worst Time (ms)</th>
-                                        <th>Average Memory (MB)</th>
-                                        <th>Best Memory (MB)</th>
-                                        <th>Worst Memory (MB)</th>
-                                        <th>Average CPU (%)</th>
-                                        <th>Best CPU (%)</th>
-                                        <th>Worst CPU (%)</th>
+                                        <td>@item.Algorithm</td>
+                                        <td>@item.ArrayType</td>
+                                        <td>@item.ExecutionCount</td>
+                                        <td>@item.TheoreticalBestCase</td>
+                                        <td>@item.TheoreticalAverageCase</td>
+                                        <td>@item.TheoreticalWorstCase</td>
+                                        <td>@item.AverageTime</td>
+                                        <td>@item.BestTime</td>
+                                        <td>@item.WorstTime</td>
+                                        <td>@item.AverageMemory</td>
+                                        <td>@item.BestMemory</td>
+                                        <td>@item.WorstMemory</td>
+                                        <td>@item.AverageCpu</td>
+                                        <td>@item.BestCpu</td>
+                                        <td>@item.WorstCpu</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.Where(m => m.ArraySize == "1000"))
-                                    {
-                                        <tr>
-                                            <td>@item.Algorithm</td>
-                                            <td>@item.ArrayType</td>
-                                            <td>@item.ExecutionCount</td>
-                                            <td>@item.TheoreticalBestCase</td>
-                                            <td>@item.TheoreticalAverageCase</td>
-                                            <td>@item.TheoreticalWorstCase</td>
-                                            <td>@item.AverageTime</td>
-                                            <td>@item.BestTime</td>
-                                            <td>@item.WorstTime</td>
-                                            <td>@item.AverageMemory</td>
-                                            <td>@item.BestMemory</td>
-                                            <td>@item.WorstMemory</td>
-                                            <td>@item.AverageCpu</td>
-                                            <td>@item.BestCpu</td>
-                                            <td>@item.WorstCpu</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                                }
+                            </tbody>
+                        </table>
                     </div>
-                    <div class="tab-pane fade" id="array-10k" role="tabpanel" aria-labelledby="tab-10k">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped text-center">
-                                <thead class="table-dark">
+
+                    <!-- 100K Array Tablosu -->
+                    <div class="mt-3">
+                        <h3 class="text-center">100K</h3>
+                        <table class="table table-bordered table-striped text-center">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>Algorithm</th>
+                                    <th>Array Type</th>
+                                    <th>Execution Count</th>
+                                    <th>Theoretical Best Case</th>
+                                    <th>Theoretical Average Case</th>
+                                    <th>Theoretical Worst Case</th>
+                                    <th>Average Time (ms)</th>
+                                    <th>Best Time (ms)</th>
+                                    <th>Worst Time (ms)</th>
+                                    <th>Average Memory (MB)</th>
+                                    <th>Best Memory (MB)</th>
+                                    <th>Worst Memory (MB)</th>
+                                    <th>Average CPU (%)</th>
+                                    <th>Best CPU (%)</th>
+                                    <th>Worst CPU (%)</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                @foreach (var item in Model.Where(m => m.ArraySize == "100000"))
+                                {
                                     <tr>
-                                        <th>Algorithm</th>
-                                        <th>Array Type</th>
-                                        <th>Execution Count</th>
-                                        <th>Theoretical Best Case</th>
-                                        <th>Theoretical Average Case</th>
-                                        <th>Theoretical Worst Case</th>
-                                        <th>Average Time (ms)</th>
-                                        <th>Best Time (ms)</th>
-                                        <th>Worst Time (ms)</th>
-                                        <th>Average Memory (MB)</th>
-                                        <th>Best Memory (MB)</th>
-                                        <th>Worst Memory (MB)</th>
-                                        <th>Average CPU (%)</th>
-                                        <th>Best CPU (%)</th>
-                                        <th>Worst CPU (%)</th>
+                                        <td>@item.Algorithm</td>
+                                        <td>@item.ArrayType</td>
+                                        <td>@item.ExecutionCount</td>
+                                        <td>@item.TheoreticalBestCase</td>
+                                        <td>@item.TheoreticalAverageCase</td>
+                                        <td>@item.TheoreticalWorstCase</td>
+                                        <td>@item.AverageTime</td>
+                                        <td>@item.BestTime</td>
+                                        <td>@item.WorstTime</td>
+                                        <td>@item.AverageMemory</td>
+                                        <td>@item.BestMemory</td>
+                                        <td>@item.WorstMemory</td>
+                                        <td>@item.AverageCpu</td>
+                                        <td>@item.BestCpu</td>
+                                        <td>@item.WorstCpu</td>
                                     </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.Where(m => m.ArraySize == "10000"))
-                                    {
-                                        <tr>
-                                            <td>@item.Algorithm</td>
-                                            <td>@item.ArrayType</td>
-                                            <td>@item.ExecutionCount</td>
-                                            <td>@item.TheoreticalBestCase</td>
-                                            <td>@item.TheoreticalAverageCase</td>
-                                            <td>@item.TheoreticalWorstCase</td>
-                                            <td>@item.AverageTime</td>
-                                            <td>@item.BestTime</td>
-                                            <td>@item.WorstTime</td>
-                                            <td>@item.AverageMemory</td>
-                                            <td>@item.BestMemory</td>
-                                            <td>@item.WorstMemory</td>
-                                            <td>@item.AverageCpu</td>
-                                            <td>@item.BestCpu</td>
-                                            <td>@item.WorstCpu</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    <div class="tab-pane fade" id="array-100k" role="tabpanel" aria-labelledby="tab-100k">
-                        <div class="table-responsive">
-                            <table class="table table-bordered table-striped text-center">
-                                <thead class="table-dark">
-                                    <tr>
-                                        <th>Algorithm</th>
-                                        <th>Array Type</th>
-                                        <th>Execution Count</th>
-                                        <th>Theoretical Best Case</th>
-                                        <th>Theoretical Average Case</th>
-                                        <th>Theoretical Worst Case</th>
-                                        <th>Average Time (ms)</th>
-                                        <th>Best Time (ms)</th>
-                                        <th>Worst Time (ms)</th>
-                                        <th>Average Memory (MB)</th>
-                                        <th>Best Memory (MB)</th>
-                                        <th>Worst Memory (MB)</th>
-                                        <th>Average CPU (%)</th>
-                                        <th>Best CPU (%)</th>
-                                        <th>Worst CPU (%)</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    @foreach (var item in Model.Where(m => m.ArraySize == "100000"))
-                                    {
-                                        <tr>
-                                            <td>@item.Algorithm</td>
-                                            <td>@item.ArrayType</td>
-                                            <td>@item.ExecutionCount</td>
-                                            <td>@item.TheoreticalBestCase</td>
-                                            <td>@item.TheoreticalAverageCase</td>
-                                            <td>@item.TheoreticalWorstCase</td>
-                                            <td>@item.AverageTime</td>
-                                            <td>@item.BestTime</td>
-                                            <td>@item.WorstTime</td>
-                                            <td>@item.AverageMemory</td>
-                                            <td>@item.BestMemory</td>
-                                            <td>@item.WorstMemory</td>
-                                            <td>@item.AverageCpu</td>
-                                            <td>@item.BestCpu</td>
-                                            <td>@item.WorstCpu</td>
-                                        </tr>
-                                    }
-                                </tbody>
-                            </table>
-                        </div>
+                                }
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>

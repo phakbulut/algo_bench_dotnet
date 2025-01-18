@@ -95,3 +95,6 @@ ClientBin/
 /.vs
 /.vs
 /bin
+/.vs
+/bin
+/obj
