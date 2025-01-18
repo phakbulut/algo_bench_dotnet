@@ -1,34 +1,30 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\dotnet\\algo_bench_dotnet\\",
+  "WorkspaceRootPath": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\rapor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\users\\isois\\onedrive\\belgeler\\github\\algo_bench_dotnet\\views\\process\\rapor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\rapor.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\algo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\users\\isois\\onedrive\\belgeler\\github\\algo_bench_dotnet\\controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:controllers\\processcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\users\\isois\\onedrive\\belgeler\\github\\algo_bench_dotnet\\algo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}",
       "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:algo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\users\\isois\\onedrive\\belgeler\\github\\algo_bench_dotnet\\views\\process\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\result.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\users\\isois\\onedrive\\belgeler\\github\\algo_bench_dotnet\\views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
       "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:views\\process\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\users\\isois\\onedrive\\belgeler\\github\\algo_bench_dotnet\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|c:\\dotnet\\algo_bench_dotnet\\algo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame",
-      "RelativeMoniker": "D:0:0:{D9E54F67-E705-4C9E-8387-A6A2D96A2DEB}|algo.csproj|solutionrelative:algo.sql||{CC5D8DF0-88F4-4BB2-9DBB-B48CEE65C30A}|CodeFrame"
     }
   ],
   "DocumentGroupContainers": [
@@ -38,40 +34,15 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 5,
+          "SelectedChildIndex": 2,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "algo.sql ",
-              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\algo.sql",
-              "RelativeDocumentMoniker": "algo.sql",
-              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\algo.sql",
-              "RelativeToolTip": "algo.sql",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
-              "WhenOpened": "2025-01-18T10:57:44.307Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "result.cshtml",
-              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\result.cshtml",
-              "RelativeDocumentMoniker": "Views\\Process\\result.cshtml",
-              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\result.cshtml",
-              "RelativeToolTip": "Views\\Process\\result.cshtml",
-              "ViewState": "AgIAAG0AAAAAAAAAAAAiwG0AAABCAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-01-16T22:49:09.766Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 4,
               "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Index.cshtml",
+              "DocumentMoniker": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Views\\Process\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Process\\Index.cshtml",
-              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Index.cshtml",
+              "ToolTip": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Views\\Process\\Index.cshtml",
               "RelativeToolTip": "Views\\Process\\Index.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAACkAAAAFAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
@@ -81,9 +52,9 @@
               "$type": "Document",
               "DocumentIndex": 5,
               "Title": "Program.cs",
-              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Program.cs",
+              "DocumentMoniker": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Program.cs",
+              "ToolTip": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Program.cs",
               "RelativeToolTip": "Program.cs",
               "ViewState": "AgIAAAEAAAAAAAAAAADwvyQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -91,29 +62,52 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "Rapor.cshtml",
-              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Rapor.cshtml",
+              "DocumentMoniker": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Views\\Process\\Rapor.cshtml",
               "RelativeDocumentMoniker": "Views\\Process\\Rapor.cshtml",
-              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Views\\Process\\Rapor.cshtml",
+              "ToolTip": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Views\\Process\\Rapor.cshtml",
               "RelativeToolTip": "Views\\Process\\Rapor.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAGgBAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAALIBAAAAAAAAAAAwwNoBAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2025-01-10T19:47:35.763Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "ProcessController.cs",
-              "DocumentMoniker": "C:\\dotnet\\algo_bench_dotnet\\Controllers\\ProcessController.cs",
+              "DocumentMoniker": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Controllers\\ProcessController.cs",
               "RelativeDocumentMoniker": "Controllers\\ProcessController.cs",
-              "ToolTip": "C:\\dotnet\\algo_bench_dotnet\\Controllers\\ProcessController.cs*",
-              "RelativeToolTip": "Controllers\\ProcessController.cs*",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAJMAAAAIAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Controllers\\ProcessController.cs",
+              "RelativeToolTip": "Controllers\\ProcessController.cs",
+              "ViewState": "AgIAAA0AAAAAAAAAAAAQwJMAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-12-25T15:00:06.026Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "result.cshtml",
+              "DocumentMoniker": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Views\\Process\\result.cshtml",
+              "RelativeDocumentMoniker": "Views\\Process\\result.cshtml",
+              "ToolTip": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\Views\\Process\\result.cshtml",
+              "RelativeToolTip": "Views\\Process\\result.cshtml",
+              "ViewState": "AgIAAG0AAAAAAAAAAAAiwG0AAABCAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-01-16T22:49:09.766Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "algo.sql",
+              "DocumentMoniker": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\algo.sql",
+              "RelativeDocumentMoniker": "algo.sql",
+              "ToolTip": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\algo.sql",
+              "RelativeToolTip": "algo.sql",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000826|",
+              "WhenOpened": "2025-01-18T10:57:44.307Z"
             }
           ]
         }
