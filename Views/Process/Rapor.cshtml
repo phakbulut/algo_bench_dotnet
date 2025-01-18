@@ -240,85 +240,64 @@
                 <h2 class="text-center text-primary">@algorithm</h2>
                 <hr>
 
-                <!-- Execution Time Charts -->
+                <!-- Charts for 1k Elements -->
                 <div class="container text-center">
                     <div class="mb-4">
                         <h4>1k Elements</h4>
-                        <p>Execution time measures how fast an algorithm runs. Lower values are better.</p>
                         <div class="row">
                             <div class="col-md-4">
                                 <h5>Memory Usage (RAM)</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-1k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-1k"></div>
                             </div>
                             <div class="col-md-4">
                                 <h5>CPU Usage</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-1k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-1k"></div>
                             </div>
                             <div class="col-md-4">
                                 <h5>Execution Time</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-1k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-1k"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Memory Usage (RAM) Charts -->
+                <!-- Charts for 10k Elements -->
                 <div class="container text-center">
                     <div class="mb-4">
                         <h4>10k Elements</h4>
-                        <p>Execution time measures how fast an algorithm runs. Lower values are better.</p>
                         <div class="row">
                             <div class="col-md-4">
                                 <h5>Memory Usage (RAM)</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-10k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-10k"></div>
                             </div>
                             <div class="col-md-4">
                                 <h5>CPU Usage</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-10k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-10k"></div>
                             </div>
                             <div class="col-md-4">
                                 <h5>Execution Time</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-10k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-10k"></div>
                             </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- CPU Usage Charts -->
+                <!-- Charts for 100k Elements -->
                 <div class="container text-center">
                     <div class="mb-4">
                         <h4>100k Elements</h4>
-                        <p>Execution time measures how fast an algorithm runs. Lower values are better.</p>
                         <div class="row">
                             <div class="col-md-4">
                                 <h5>Memory Usage (RAM)</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-100k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-100k"></div>
                             </div>
                             <div class="col-md-4">
                                 <h5>CPU Usage</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-100k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-100k"></div>
                             </div>
                             <div class="col-md-4">
                                 <h5>Execution Time</h5>
-                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-100k">
-                                    <!-- Grafik buraya gelecek -->
-                                </div>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-100k"></div>
                             </div>
                         </div>
                     </div>
@@ -327,7 +306,6 @@
         }
     </div>
 </div>
-
 
 <button id="download-invoice" class="btn btn-primary">Download PDF</button>
 
@@ -348,7 +326,7 @@
                 const { jsPDF } = window.jspdf;
                 const doc = new jsPDF();
 
-                const pages = ['page-1', 'page-2'];
+                const pages = ['page-1', 'page-3'];
 
                 pages.forEach((pageId, index) => {
                     const pageElement = document.getElementById(pageId);
@@ -403,73 +381,92 @@
     </script>
     <script>
         document.addEventListener("DOMContentLoaded", function () {
-            var options = {
-                series: [{
-                    name: 'Net Profit',
-                    data: [44, 55, 57, 56, 161]
-                }, {
-                    name: 'Revenue',
-                    data: [76, 85, 101, 98, 387]
-                }, {
-                    name: 'Free Cash Flow',
-                    data: [35, 41, 36, 26, 245]
-                }],
-                chart: {
-                    type: 'bar',
-                    height: 350
-                },
-                plotOptions: {
-                    bar: {
-                        horizontal: false,
-                        columnWidth: '55%',
-                        borderRadius: 5
-                    },
-                },
-                dataLabels: {
-                    enabled: false
-                },
-                stroke: {
-                    show: true,
-                    width: 2,
-                    colors: ['transparent']
-                },
-                xaxis: {
-                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun'],
-                },
-                yaxis: {
-                    title: {
-                        text: '$ (thousands)'
+            // JSON verisini al
+            var jsonData = JSON.parse('@Html.Raw(ViewBag.JsonData)');
+            console.log("JSON Data:", jsonData);
+
+            // Algoritmaları ve ID bilgilerini gruplamak için yapı
+            var algorithms = ["random", "partially", "reverse"];
+            var sizes = ["1k", "10k", "100k"];
+
+            // Her algoritma ve boyut için veriyi ayıkla ve grafikleri oluştur
+            algorithms.forEach(function (algorithm) {
+                sizes.forEach(function (size) {
+                    // Veriyi filtrele
+                    var filteredData = jsonData.filter(data =>
+                        data.ArrayType.toLowerCase() === algorithm &&
+                        data.ArraySize === size.replace("k", "000")
+                    );
+
+                    console.log(`Filtered Data for ${algorithm} (${size}):`, filteredData);
+
+                    if (filteredData.length > 0) {
+                        try {
+                            // Memory Usage
+                            var memorySeries = [
+                                { name: 'Best', data: filteredData.map(data => parseFloat(data.BestMemory)) },
+                                { name: 'Worst', data: filteredData.map(data => parseFloat(data.WorstMemory)) },
+                                { name: 'Average', data: filteredData.map(data => parseFloat(data.AverageMemory)) }
+                            ];
+                            renderChart(`${algorithm.replace(" ", "-")}-sorted-memory-${size}`, memorySeries, filteredData.map(data => data.Algorithm), "MB");
+
+                            // CPU Usage
+                            var cpuSeries = [
+                                { name: 'Best', data: filteredData.map(data => parseFloat(data.BestCpu)) },
+                                { name: 'Worst', data: filteredData.map(data => parseFloat(data.WorstCpu)) },
+                                { name: 'Average', data: filteredData.map(data => parseFloat(data.AverageCpu)) }
+                            ];
+                            renderChart(`${algorithm.replace(" ", "-")}-sorted-cpu-${size}`, cpuSeries, filteredData.map(data => data.Algorithm), "%");
+
+                            // Execution Time
+                            var timeSeries = [
+                                { name: 'Best', data: filteredData.map(data => parseFloat(data.BestTime)) },
+                                { name: 'Worst', data: filteredData.map(data => parseFloat(data.WorstTime)) },
+                                { name: 'Average', data: filteredData.map(data => parseFloat(data.AverageTime)) }
+                            ];
+                            renderChart(`${algorithm.replace(" ", "-")}-sorted-execution-${size}`, timeSeries, filteredData.map(data => data.Algorithm), "ms");
+                        } catch (error) {
+                            console.error(`Error rendering chart for ${algorithm} (${size}):`, error);
+                        }
+                    } else {
+                        console.warn(`No data found for ${algorithm} (${size})`);
                     }
-                },
-                fill: {
-                    opacity: 1
-                },
-                tooltip: {
-                    y: {
-                        formatter: function (val) {
-                            return "$ " + val + " thousands"
+                });
+            });
+
+            // Grafik oluşturma fonksiyonu
+            function renderChart(id, series, categories, unit) {
+                var options = {
+                    series: series,
+                    chart: {
+                        type: 'bar',
+                        height: 350
+                    },
+                    xaxis: {
+                        categories: categories
+                    },
+                    yaxis: {
+                        title: {
+                            text: unit
+                        }
+                    },
+                    tooltip: {
+                        y: {
+                            formatter: function (val) {
+                                return val + " " + unit;
+                            }
                         }
                     }
+                };
+
+                var element = document.querySelector(`#${id}`);
+                if (element) {
+                    var chart = new ApexCharts(element, options);
+                    chart.render();
+                } else {
+                    console.error(`Element with ID '${id}' not found`);
                 }
-            };
-
-            // IDs for charts
-            var ids = [
-                "random-sorted-memory-1k", "random-sorted-cpu-1k", "random-sorted-execution-1k",
-                "random-sorted-memory-10k", "random-sorted-cpu-10k", "random-sorted-execution-10k",
-                "random-sorted-memory-100k", "random-sorted-cpu-100k", "random-sorted-execution-100k",
-                "partially-sorted-memory-1k", "partially-sorted-cpu-1k", "partially-sorted-execution-1k",
-                "partially-sorted-memory-10k", "partially-sorted-cpu-10k", "partially-sorted-execution-10k",
-                "partially-sorted-memory-100k", "partially-sorted-cpu-100k", "partially-sorted-execution-100k",
-                "reverse-sorted-memory-1k", "reverse-sorted-cpu-1k", "reverse-sorted-execution-1k",
-                "reverse-sorted-memory-10k", "reverse-sorted-cpu-10k", "reverse-sorted-execution-10k",
-                "reverse-sorted-memory-100k", "reverse-sorted-cpu-100k", "reverse-sorted-execution-100k"
-            ];
-
-            ids.forEach(function (id) {
-                var chart = new ApexCharts(document.querySelector(`#${id}`), options);
-                chart.render();
-            });
+            }
         });
     </script>
 }

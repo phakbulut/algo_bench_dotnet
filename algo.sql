@@ -30,14 +30,14 @@ SET time_zone = "+00:00";
 DROP TABLE IF EXISTS `algorithmlogs`;
 CREATE TABLE IF NOT EXISTS `algorithmlogs` (
   `Id` int NOT NULL AUTO_INCREMENT,
-  `Algorithm` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
-  `ArrayType` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci,
+  `Algorithm` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
+  `ArrayType` longtext CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci,
   `ArraySize` int NOT NULL,
   `TimeTaken` double NOT NULL,
   `AverageMemory` double NOT NULL,
   `AverageCpu` double NOT NULL,
   PRIMARY KEY (`Id`)
-) ENGINE=MyISAM AUTO_INCREMENT=560 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=MyISAM AUTO_INCREMENT=560 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Tablo döküm verisi `algorithmlogs`

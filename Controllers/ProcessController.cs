@@ -420,7 +420,7 @@ namespace AlgorithmProject.Controllers
                         viewModel.Add(new AlgorithmReportViewModel
                         {
                             Algorithm = algorithm,
-                            ArrayType = arrayType,
+                            ArrayType = arrayType.Split(' ')[0].Trim(),
                             ArraySize = arraySize.ToString(),
                             AverageTime = Math.Round(filteredLogs.Average(log => log.TimeTaken), 3),
                             BestTime = Math.Round(filteredLogs.Min(log => log.TimeTaken), 3),

@@ -2561,23 +2561,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\ibrahim\\.nuget\\packages\\": {},
+    "C:\\Users\\isois\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\dotnet\\algo_bench_dotnet\\algo.csproj",
+      "projectUniqueName": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\algo.csproj",
       "projectName": "algo",
-      "projectPath": "C:\\dotnet\\algo_bench_dotnet\\algo.csproj",
-      "packagesPath": "C:\\Users\\ibrahim\\.nuget\\packages\\",
-      "outputPath": "C:\\dotnet\\algo_bench_dotnet\\obj\\",
+      "projectPath": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\algo.csproj",
+      "packagesPath": "C:\\Users\\isois\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\isois\\OneDrive\\Belgeler\\GitHub\\algo_bench_dotnet\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\ibrahim\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\isois\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -2586,7 +2586,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -2603,7 +2602,7 @@
       "restoreAuditProperties": {
         "enableAudit": "true",
         "auditLevel": "low",
-        "auditMode": "all"
+        "auditMode": "direct"
       },
       "SdkAnalysisLevel": "9.0.100"
     },
@@ -2663,40 +2662,8 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.100/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
       }
     }
-  },
-  "logs": [
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "'Microsoft.Extensions.Caching.Memory' 8.0.0 paketinde önem derecesi yüksek olan bilinen bir https://github.com/advisories/GHSA-qj66-m88j-hmgj güvenlik açığı var",
-      "libraryId": "Microsoft.Extensions.Caching.Memory",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "'System.Text.Json' 8.0.0 paketinde önem derecesi yüksek olan bilinen bir https://github.com/advisories/GHSA-8g4q-xg66-9fp4 güvenlik açığı var",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    },
-    {
-      "code": "NU1903",
-      "level": "Warning",
-      "warningLevel": 1,
-      "message": "'System.Text.Json' 8.0.0 paketinde önem derecesi yüksek olan bilinen bir https://github.com/advisories/GHSA-hh2w-p6rv-4g7w güvenlik açığı var",
-      "libraryId": "System.Text.Json",
-      "targetGraphs": [
-        "net8.0"
-      ]
-    }
-  ]
+  }
 }
