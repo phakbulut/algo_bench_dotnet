@@ -11,355 +11,383 @@
 }
 
 
-    <div id="page-1">
+<div id="page-1">
 
-        <div class="container my-5">
-            <h1 class="text-center mb-4">Sorting Algorithms Detailed Performance Report</h1>
-            <p class="text-muted text-center">
-                This report compares theoretical and experimental performance of sorting algorithms under different
-                array
-                configurations.
-            </p>
-            <div class="table-responsive">
-                <div class="tabs">
-                    <!-- Tab Menüsü -->
-                    <ul class="nav nav-tabs" id="arrayTabs" role="tablist">
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link active" id="tab-1k" data-bs-toggle="tab" href="#array-1k" role="tab"
-                                aria-controls="array-1k" aria-selected="true">1K</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="tab-10k" data-bs-toggle="tab" href="#array-10k" role="tab"
-                                aria-controls="array-10k" aria-selected="false">10K</a>
-                        </li>
-                        <li class="nav-item" role="presentation">
-                            <a class="nav-link" id="tab-100k" data-bs-toggle="tab" href="#array-100k" role="tab"
-                                aria-controls="array-100k" aria-selected="false">100K</a>
-                        </li>
-                    </ul>
+    <div class="container my-5">
+        <h1 class="text-center mb-4">Sorting Algorithms Detailed Performance Report</h1>
+        <p class="text-muted text-center">
+            This report compares theoretical and experimental performance of sorting algorithms under different
+            array
+            configurations.
+        </p>
+        <div class="table-responsive">
+            <div class="tabs">
+                <!-- Tab Menüsü -->
+                <ul class="nav nav-tabs" id="arrayTabs" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link active" id="tab-1k" data-bs-toggle="tab" href="#array-1k" role="tab"
+                           aria-controls="array-1k" aria-selected="true">1K</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="tab-10k" data-bs-toggle="tab" href="#array-10k" role="tab"
+                           aria-controls="array-10k" aria-selected="false">10K</a>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <a class="nav-link" id="tab-100k" data-bs-toggle="tab" href="#array-100k" role="tab"
+                           aria-controls="array-100k" aria-selected="false">100K</a>
+                    </li>
+                </ul>
 
-                    <!-- Tab İçerikleri -->
-                    <div class="tab-content mt-3" id="arrayTabsContent">
-                        <div class="tab-pane fade show active" id="array-1k" role="tabpanel" aria-labelledby="tab-1k">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped text-center">
-                                    <thead class="table-dark">
+                <!-- Tab İçerikleri -->
+                <div class="tab-content mt-3" id="arrayTabsContent">
+                    <div class="tab-pane fade show active" id="array-1k" role="tabpanel" aria-labelledby="tab-1k">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped text-center">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Algorithm</th>
+                                        <th>Array Type</th>
+                                        <th>Execution Count</th>
+                                        <th>Theoretical Best Case</th>
+                                        <th>Theoretical Average Case</th>
+                                        <th>Theoretical Worst Case</th>
+                                        <th>Average Time (ms)</th>
+                                        <th>Best Time (ms)</th>
+                                        <th>Worst Time (ms)</th>
+                                        <th>Average Memory (MB)</th>
+                                        <th>Best Memory (MB)</th>
+                                        <th>Worst Memory (MB)</th>
+                                        <th>Average CPU (%)</th>
+                                        <th>Best CPU (%)</th>
+                                        <th>Worst CPU (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Where(m => m.ArraySize == "1000"))
+                                    {
                                         <tr>
-                                            <th>Algorithm</th>
-                                            <th>Array Type</th>
-                                            <th>Execution Count</th>
-                                            <th>Theoretical Best Case</th>
-                                            <th>Theoretical Average Case</th>
-                                            <th>Theoretical Worst Case</th>
-                                            <th>Average Time (ms)</th>
-                                            <th>Best Time (ms)</th>
-                                            <th>Worst Time (ms)</th>
-                                            <th>Average Memory (MB)</th>
-                                            <th>Best Memory (MB)</th>
-                                            <th>Worst Memory (MB)</th>
-                                            <th>Average CPU (%)</th>
-                                            <th>Best CPU (%)</th>
-                                            <th>Worst CPU (%)</th>
-                                            <th>Invalid Measurements</th>
+                                            <td>@item.Algorithm</td>
+                                            <td>@item.ArrayType</td>
+                                            <td>@item.ExecutionCount</td>
+                                            <td>@item.TheoreticalBestCase</td>
+                                            <td>@item.TheoreticalAverageCase</td>
+                                            <td>@item.TheoreticalWorstCase</td>
+                                            <td>@item.AverageTime</td>
+                                            <td>@item.BestTime</td>
+                                            <td>@item.WorstTime</td>
+                                            <td>@item.AverageMemory</td>
+                                            <td>@item.BestMemory</td>
+                                            <td>@item.WorstMemory</td>
+                                            <td>@item.AverageCpu</td>
+                                            <td>@item.BestCpu</td>
+                                            <td>@item.WorstCpu</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Where(m => m.ArraySize == "1000"))
-                                        {
-                                            <tr>
-                                                <td>@item.Algorithm</td>
-                                                <td>@item.ArrayType</td>
-                                                <td>@item.ExecutionCount</td>
-                                                <td>@item.TheoreticalBestCase</td>
-                                                <td>@item.TheoreticalAverageCase</td>
-                                                <td>@item.TheoreticalWorstCase</td>
-                                                <td>@item.AverageTime</td>
-                                                <td>@item.BestTime</td>
-                                                <td>@item.WorstTime</td>
-                                                <td>@item.AverageMemory</td>
-                                                <td>@item.BestMemory</td>
-                                                <td>@item.WorstMemory</td>
-                                                <td>@item.AverageCpu</td>
-                                                <td>@item.BestCpu</td>
-                                                <td>@item.WorstCpu</td>
-                                                <td>@item.InvalidMeasurementCount</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="tab-pane fade" id="array-10k" role="tabpanel" aria-labelledby="tab-10k">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped text-center">
-                                    <thead class="table-dark">
+                    </div>
+                    <div class="tab-pane fade" id="array-10k" role="tabpanel" aria-labelledby="tab-10k">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped text-center">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Algorithm</th>
+                                        <th>Array Type</th>
+                                        <th>Execution Count</th>
+                                        <th>Theoretical Best Case</th>
+                                        <th>Theoretical Average Case</th>
+                                        <th>Theoretical Worst Case</th>
+                                        <th>Average Time (ms)</th>
+                                        <th>Best Time (ms)</th>
+                                        <th>Worst Time (ms)</th>
+                                        <th>Average Memory (MB)</th>
+                                        <th>Best Memory (MB)</th>
+                                        <th>Worst Memory (MB)</th>
+                                        <th>Average CPU (%)</th>
+                                        <th>Best CPU (%)</th>
+                                        <th>Worst CPU (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Where(m => m.ArraySize == "10000"))
+                                    {
                                         <tr>
-                                            <th>Algorithm</th>
-                                            <th>Array Type</th>
-                                            <th>Execution Count</th>
-                                            <th>Theoretical Best Case</th>
-                                            <th>Theoretical Average Case</th>
-                                            <th>Theoretical Worst Case</th>
-                                            <th>Average Time (ms)</th>
-                                            <th>Best Time (ms)</th>
-                                            <th>Worst Time (ms)</th>
-                                            <th>Average Memory (MB)</th>
-                                            <th>Best Memory (MB)</th>
-                                            <th>Worst Memory (MB)</th>
-                                            <th>Average CPU (%)</th>
-                                            <th>Best CPU (%)</th>
-                                            <th>Worst CPU (%)</th>
-                                            <th>Invalid Measurements</th>
+                                            <td>@item.Algorithm</td>
+                                            <td>@item.ArrayType</td>
+                                            <td>@item.ExecutionCount</td>
+                                            <td>@item.TheoreticalBestCase</td>
+                                            <td>@item.TheoreticalAverageCase</td>
+                                            <td>@item.TheoreticalWorstCase</td>
+                                            <td>@item.AverageTime</td>
+                                            <td>@item.BestTime</td>
+                                            <td>@item.WorstTime</td>
+                                            <td>@item.AverageMemory</td>
+                                            <td>@item.BestMemory</td>
+                                            <td>@item.WorstMemory</td>
+                                            <td>@item.AverageCpu</td>
+                                            <td>@item.BestCpu</td>
+                                            <td>@item.WorstCpu</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Where(m => m.ArraySize == "10000"))
-                                        {
-                                            <tr>
-                                                <td>@item.Algorithm</td>
-                                                <td>@item.ArrayType</td>
-                                                <td>@item.ExecutionCount</td>
-                                                <td>@item.TheoreticalBestCase</td>
-                                                <td>@item.TheoreticalAverageCase</td>
-                                                <td>@item.TheoreticalWorstCase</td>
-                                                <td>@item.AverageTime</td>
-                                                <td>@item.BestTime</td>
-                                                <td>@item.WorstTime</td>
-                                                <td>@item.AverageMemory</td>
-                                                <td>@item.BestMemory</td>
-                                                <td>@item.WorstMemory</td>
-                                                <td>@item.AverageCpu</td>
-                                                <td>@item.BestCpu</td>
-                                                <td>@item.WorstCpu</td>
-                                                <td>@item.InvalidMeasurementCount</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
-                        <div class="tab-pane fade" id="array-100k" role="tabpanel" aria-labelledby="tab-100k">
-                            <div class="table-responsive">
-                                <table class="table table-bordered table-striped text-center">
-                                    <thead class="table-dark">
+                    </div>
+                    <div class="tab-pane fade" id="array-100k" role="tabpanel" aria-labelledby="tab-100k">
+                        <div class="table-responsive">
+                            <table class="table table-bordered table-striped text-center">
+                                <thead class="table-dark">
+                                    <tr>
+                                        <th>Algorithm</th>
+                                        <th>Array Type</th>
+                                        <th>Execution Count</th>
+                                        <th>Theoretical Best Case</th>
+                                        <th>Theoretical Average Case</th>
+                                        <th>Theoretical Worst Case</th>
+                                        <th>Average Time (ms)</th>
+                                        <th>Best Time (ms)</th>
+                                        <th>Worst Time (ms)</th>
+                                        <th>Average Memory (MB)</th>
+                                        <th>Best Memory (MB)</th>
+                                        <th>Worst Memory (MB)</th>
+                                        <th>Average CPU (%)</th>
+                                        <th>Best CPU (%)</th>
+                                        <th>Worst CPU (%)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    @foreach (var item in Model.Where(m => m.ArraySize == "100000"))
+                                    {
                                         <tr>
-                                            <th>Algorithm</th>
-                                            <th>Array Type</th>
-                                            <th>Execution Count</th>
-                                            <th>Theoretical Best Case</th>
-                                            <th>Theoretical Average Case</th>
-                                            <th>Theoretical Worst Case</th>
-                                            <th>Average Time (ms)</th>
-                                            <th>Best Time (ms)</th>
-                                            <th>Worst Time (ms)</th>
-                                            <th>Average Memory (MB)</th>
-                                            <th>Best Memory (MB)</th>
-                                            <th>Worst Memory (MB)</th>
-                                            <th>Average CPU (%)</th>
-                                            <th>Best CPU (%)</th>
-                                            <th>Worst CPU (%)</th>
-                                            <th>Invalid Measurements</th>
+                                            <td>@item.Algorithm</td>
+                                            <td>@item.ArrayType</td>
+                                            <td>@item.ExecutionCount</td>
+                                            <td>@item.TheoreticalBestCase</td>
+                                            <td>@item.TheoreticalAverageCase</td>
+                                            <td>@item.TheoreticalWorstCase</td>
+                                            <td>@item.AverageTime</td>
+                                            <td>@item.BestTime</td>
+                                            <td>@item.WorstTime</td>
+                                            <td>@item.AverageMemory</td>
+                                            <td>@item.BestMemory</td>
+                                            <td>@item.WorstMemory</td>
+                                            <td>@item.AverageCpu</td>
+                                            <td>@item.BestCpu</td>
+                                            <td>@item.WorstCpu</td>
                                         </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach (var item in Model.Where(m => m.ArraySize == "100000"))
-                                        {
-                                            <tr>
-                                                <td>@item.Algorithm</td>
-                                                <td>@item.ArrayType</td>
-                                                <td>@item.ExecutionCount</td>
-                                                <td>@item.TheoreticalBestCase</td>
-                                                <td>@item.TheoreticalAverageCase</td>
-                                                <td>@item.TheoreticalWorstCase</td>
-                                                <td>@item.AverageTime</td>
-                                                <td>@item.BestTime</td>
-                                                <td>@item.WorstTime</td>
-                                                <td>@item.AverageMemory</td>
-                                                <td>@item.BestMemory</td>
-                                                <td>@item.WorstMemory</td>
-                                                <td>@item.AverageCpu</td>
-                                                <td>@item.BestCpu</td>
-                                                <td>@item.WorstCpu</td>
-                                                <td>@item.InvalidMeasurementCount</td>
-                                            </tr>
-                                        }
-                                    </tbody>
-                                </table>
-                            </div>
+                                    }
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
-
-            </div>
-            <!-- Explanation Section -->
-            <div class="alert alert-info">
-                <h5>Explanation</h5>
-                <ul>
-                    <li><strong>n:</strong> Number of elements in the array.</li>
-                    <li><strong>k:</strong> The number of digits (for algorithms like Radix Sort).</li>
-                    <li>
-                        Arrays are tested under 3 configurations: <strong>Randomly Ordered</strong>, <strong>
-                            Partially
-                            Ordered
-                        </strong>, and <strong>Reverse Ordered</strong>.
-                    </li>
-                    <li>
-                        Array sizes tested: <strong>1,000</strong>, <strong>10,000</strong>, and
-                        <strong>100,000</strong>.
-                    </li>
-                    <li>
-                        Each test compares <strong>RAM usage</strong>, <strong>CPU percentage</strong>, and
-                        <strong>Execution Time</strong>.
-                    </li>
-                    <li><strong>Execution Count:</strong> The number of times the algorithm was executed for the given
-                        configuration and array size.</li>
-                    <li><strong>Best Case:</strong> Theoretical best case time complexity for the algorithm, depending
-                        on the input configuration.</li>
-                    <li><strong>Average Case:</strong> Theoretical average case time complexity, assuming typical input
-                        distributions.</li>
-                    <li><strong>Worst Case:</strong> Theoretical worst case time complexity, representing the
-                        algorithm's performance under the most challenging input.</li>
-                    <li><strong>Invalid Measurements:</strong> Counts how many times measurements were invalid (e.g.,
-                        when memory or CPU usage was zero, which is unrealistic).</li>
-                </ul>
             </div>
 
         </div>
+        <!-- Explanation Section -->
+        <div class="alert alert-info">
+            <h5>Explanation</h5>
+            <ul>
+                <li><strong>n:</strong> Number of elements in the array.</li>
+                <li><strong>k:</strong> The number of digits (for algorithms like Radix Sort).</li>
+                <li>
+                    Arrays are tested under 3 configurations: <strong>Randomly Ordered</strong>, <strong>
+                        Partially
+                        Ordered
+                    </strong>, and <strong>Reverse Ordered</strong>.
+                </li>
+                <li>
+                    Array sizes tested: <strong>1,000</strong>, <strong>10,000</strong>, and
+                    <strong>100,000</strong>.
+                </li>
+                <li>
+                    Each test compares <strong>RAM usage</strong>, <strong>CPU percentage</strong>, and
+                    <strong>Execution Time</strong>.
+                </li>
+                <li>
+                    <strong>Execution Count:</strong> The number of times the algorithm was executed for the given
+                    configuration and array size.
+                </li>
+                <li>
+                    <strong>Best Case:</strong> Theoretical best case time complexity for the algorithm, depending
+                    on the input configuration.
+                </li>
+                <li>
+                    <strong>Average Case:</strong> Theoretical average case time complexity, assuming typical input
+                    distributions.
+                </li>
+                <li>
+                    <strong>Worst Case:</strong> Theoretical worst case time complexity, representing the
+                    algorithm's performance under the most challenging input.
+                </li>
+                <li>
+                    <strong>Invalid Measurements:</strong> Counts how many times measurements were invalid (e.g.,
+                    when memory or CPU usage was zero, which is unrealistic).
+                </li>
+            </ul>
+        </div>
 
     </div>
-    <div id="page-3">
-        <div id="algorithms">
-            <!-- For each algorithm -->
-            @foreach (var algorithm in new[] { "quick", "heap", "shell", "merge", "radix" })
-            {
-                <div class="mb-5">
-                    <h2 class="text-center text-primary">@algorithm</h2>
-                    <hr>
 
-                    <!-- Execution Time Charts -->
+</div>
+<div id="page-3">
+    <div id="algorithms" class="container">
+        <!-- For each algorithm -->
+        @foreach (var algorithm in new[] { "Random Sorted", "Partially Sorted", "Reverse Sorted" })
+        {
+            <div class="mb-5">
+                <h2 class="text-center text-primary">@algorithm</h2>
+                <hr>
+
+                <!-- Execution Time Charts -->
+                <div class="container text-center">
                     <div class="mb-4">
-                        <h4>Execution Time</h4>
+                        <h4>1k Elements</h4>
                         <p>Execution time measures how fast an algorithm runs. Lower values are better.</p>
                         <div class="row">
                             <div class="col-md-4">
-                                <h5>1k Elements</h5>
-                                <div id="chart-@algorithm-random-1k"></div>
+                                <h5>Memory Usage (RAM)</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-1k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>10k Elements</h5>
-                                <div id="chart-@algorithm-random-10k"></div>
+                                <h5>CPU Usage</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-1k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
                             </div>
                             <div class="col-md-4">
-                                <h5>100k Elements</h5>
-                                <div id="chart-@algorithm-random-100k"></div>
+                                <h5>Execution Time</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-1k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
                             </div>
                         </div>
                     </div>
-
-                    <!-- Memory Usage (RAM) Charts -->
-                    <div class="mb-4">
-                        <h4>Memory Usage (RAM)</h4>
-                        <p>Memory usage indicates how much RAM the algorithm requires. Lower values are better.</p>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h5>1k Elements</h5>
-                                <div id="chart-@algorithm-random-memory-1k"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5>10k Elements</h5>
-                                <div id="chart-@algorithm-random-memory-10k"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5>100k Elements</h5>
-                                <div id="chart-@algorithm-random-memory-100k"></div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- CPU Usage Charts -->
-                    <div class="mb-4">
-                        <h4>CPU Usage</h4>
-                        <p>CPU usage shows how much CPU the algorithm uses during execution. Lower values are better.</p>
-                        <div class="row">
-                            <div class="col-md-4">
-                                <h5>1k Elements</h5>
-                                <div id="chart-@algorithm-random-cpu-1k"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5>10k Elements</h5>
-                                <div id="chart-@algorithm-random-cpu-10k"></div>
-                            </div>
-                            <div class="col-md-4">
-                                <h5>100k Elements</h5>
-                                <div id="chart-@algorithm-random-cpu-100k"></div>
-                            </div>
-                        </div>
-                    </div>
-
                 </div>
-            }
-        </div>
-    </div>
 
-    <button id="download-invoice" class="btn btn-primary">Download PDF</button>
+                <!-- Memory Usage (RAM) Charts -->
+                <div class="container text-center">
+                    <div class="mb-4">
+                        <h4>10k Elements</h4>
+                        <p>Execution time measures how fast an algorithm runs. Lower values are better.</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Memory Usage (RAM)</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-10k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>CPU Usage</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-10k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Execution Time</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-10k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- CPU Usage Charts -->
+                <div class="container text-center">
+                    <div class="mb-4">
+                        <h4>100k Elements</h4>
+                        <p>Execution time measures how fast an algorithm runs. Lower values are better.</p>
+                        <div class="row">
+                            <div class="col-md-4">
+                                <h5>Memory Usage (RAM)</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-memory-100k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>CPU Usage</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-cpu-100k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
+                            </div>
+                            <div class="col-md-4">
+                                <h5>Execution Time</h5>
+                                <div id="@algorithm.Replace(" ", "-").ToLower()-execution-100k">
+                                    <!-- Grafik buraya gelecek -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
+
+
+<button id="download-invoice" class="btn btn-primary">Download PDF</button>
 
 @section Scripts {
 
-<script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
-<script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
-    integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
-    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.jsdelivr.net/npm/apexcharts"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/dompurify/2.4.0/purify.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://html2canvas.hertzen.com/dist/html2canvas.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"
+            integrity="sha512-GsLlZN/3F2ErC5ifS5QtgpiJtWd43JWSuIgh7mbzZ8zBps+dvLusV+eNQATqgA/HdeKFVgA5v3S/cIrLF7QnIg=="
+            crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
 
-<script>
-    window.onload = function () {
-        document.getElementById('download-invoice').addEventListener('click', function () {
-            const { jsPDF } = window.jspdf;
-            const doc = new jsPDF();
+    <script>
+        window.onload = function () {
+            document.getElementById('download-invoice').addEventListener('click', function () {
+                const { jsPDF } = window.jspdf;
+                const doc = new jsPDF();
 
-            const pages = ['page-1', 'page-2'];
+                const pages = ['page-1', 'page-2'];
 
-            pages.forEach((pageId, index) => {
-                const pageElement = document.getElementById(pageId);
+                pages.forEach((pageId, index) => {
+                    const pageElement = document.getElementById(pageId);
 
-                // 1 saniye beklemek, içeriklerin yüklenmesi için daha fazla zaman tanıyacaktır
-                setTimeout(function () {
-                    html2canvas(pageElement, {
-                        scale: 1,
-                        useCORS: true,
-                        logging: true,
-                    }).then((canvas) => {
-                        const imgData = canvas.toDataURL('image/png');
+                    // 1 saniye beklemek, içeriklerin yüklenmesi için daha fazla zaman tanıyacaktır
+                    setTimeout(function () {
+                        html2canvas(pageElement, {
+                            scale: 1,
+                            useCORS: true,
+                            logging: true,
+                        }).then((canvas) => {
+                            const imgData = canvas.toDataURL('image/png');
 
-                        if (index > 0) {
-                            doc.addPage();
-                        }
+                            if (index > 0) {
+                                doc.addPage();
+                            }
 
-                        const pageWidth = doc.internal.pageSize.width;
-                        const pageHeight = doc.internal.pageSize.height;
-                        const imgHeight = canvas.height * pageWidth / canvas.width;
+                            const pageWidth = doc.internal.pageSize.width;
+                            const pageHeight = doc.internal.pageSize.height;
+                            const imgHeight = canvas.height * pageWidth / canvas.width;
 
-                        doc.addImage(imgData, 'PNG', 0, 0, pageWidth, imgHeight);
+                            doc.addImage(imgData, 'PNG', 0, 0, pageWidth, imgHeight);
 
-                        // PDF'in son sayfası render edildikten sonra kaydedilir
-                        if (index === pages.length - 1) {
-                            doc.save('Algo_Report.pdf');
-                        }
-                    });
-                }, 1000);  // 1 saniye bekleme
+                            // PDF'in son sayfası render edildikten sonra kaydedilir
+                            if (index === pages.length - 1) {
+                                doc.save('Algo_Report.pdf');
+                            }
+                        });
+                    }, 1000);  // 1 saniye bekleme
+                });
             });
-        });
-    };
+        };
 
-</script>
-<script>
-    var jsonData = JSON.parse('@Html.Raw(ViewBag.JsonData)');
-    console.log(jsonData);
+    </script>
+    <script>
+        var jsonData = JSON.parse('@Html.Raw(ViewBag.JsonData)');
+        console.log(jsonData);
 
-    @* // Example JS for Quick Sort - Random Array - 1k Elements Execution Time Chart
+        @* // Example JS for Quick Sort - Random Array - 1k Elements Execution Time Chart
     var quickSortRandom1kExecutionTime = {
         chart: { type: 'line' },
         series: [{
@@ -371,7 +399,77 @@
     };
     new ApexCharts(document.querySelector("#chart-quick-random-1k"), quickSortRandom1kExecutionTime).render(); *@
 
-    // Repeat similar scripts for all other charts
-</script>
+        // Repeat similar scripts for all other charts
+    </script>
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            var options = {
+                series: [{
+                    name: 'Net Profit',
+                    data: [44, 55, 57, 56, 161]
+                }, {
+                    name: 'Revenue',
+                    data: [76, 85, 101, 98, 387]
+                }, {
+                    name: 'Free Cash Flow',
+                    data: [35, 41, 36, 26, 245]
+                }],
+                chart: {
+                    type: 'bar',
+                    height: 350
+                },
+                plotOptions: {
+                    bar: {
+                        horizontal: false,
+                        columnWidth: '55%',
+                        borderRadius: 5
+                    },
+                },
+                dataLabels: {
+                    enabled: false
+                },
+                stroke: {
+                    show: true,
+                    width: 2,
+                    colors: ['transparent']
+                },
+                xaxis: {
+                    categories: ['Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                },
+                yaxis: {
+                    title: {
+                        text: '$ (thousands)'
+                    }
+                },
+                fill: {
+                    opacity: 1
+                },
+                tooltip: {
+                    y: {
+                        formatter: function (val) {
+                            return "$ " + val + " thousands"
+                        }
+                    }
+                }
+            };
 
+            // IDs for charts
+            var ids = [
+                "random-sorted-memory-1k", "random-sorted-cpu-1k", "random-sorted-execution-1k",
+                "random-sorted-memory-10k", "random-sorted-cpu-10k", "random-sorted-execution-10k",
+                "random-sorted-memory-100k", "random-sorted-cpu-100k", "random-sorted-execution-100k",
+                "partially-sorted-memory-1k", "partially-sorted-cpu-1k", "partially-sorted-execution-1k",
+                "partially-sorted-memory-10k", "partially-sorted-cpu-10k", "partially-sorted-execution-10k",
+                "partially-sorted-memory-100k", "partially-sorted-cpu-100k", "partially-sorted-execution-100k",
+                "reverse-sorted-memory-1k", "reverse-sorted-cpu-1k", "reverse-sorted-execution-1k",
+                "reverse-sorted-memory-10k", "reverse-sorted-cpu-10k", "reverse-sorted-execution-10k",
+                "reverse-sorted-memory-100k", "reverse-sorted-cpu-100k", "reverse-sorted-execution-100k"
+            ];
+
+            ids.forEach(function (id) {
+                var chart = new ApexCharts(document.querySelector(`#${id}`), options);
+                chart.render();
+            });
+        });
+    </script>
 }
