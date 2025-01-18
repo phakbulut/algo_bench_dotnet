@@ -74,26 +74,36 @@ namespace AlgorithmProject.Controllers
                 }
             }, token);
 
-            // Algoritma çalıştırma
-            switch (algorithm.ToLower())
+            try
             {
-                case "quick":
-                    QuickSort(data, 0, data.Length - 1);
-                    break;
-                case "heap":
-                    HeapSort(data);
-                    break;
-                case "shell":
-                    ShellSort(data);
-                    break;
-                case "radix":
-                    RadixSort(data);
-                    break;
-                case "merge":
-                    MergeSort(data, 0, data.Length - 1);
-                    break;
-                default:
-                    return BadRequest("Geçersiz algoritma seçimi.");
+                // Algoritma çalıştırma
+                switch (algorithm.ToLower())
+                {
+                    case "quick":
+                        QuickSort(data, 0, data.Length - 1);
+                        break;
+                    case "heap":
+                        HeapSort(data);
+                        break;
+                    case "shell":
+                        ShellSort(data);
+                        break;
+                    case "radix":
+                        RadixSort(data);
+                        break;
+                    case "merge":
+                        MergeSort(data, 0, data.Length - 1);
+                        break;
+                    default:
+                        return BadRequest("Geçersiz algoritma seçimi.");
+                }
+            }
+            finally
+            {
+                // Manuel çöp toplama
+                GC.Collect();
+                GC.WaitForPendingFinalizers();
+                GC.Collect();
             }
 
             // Ölçümleri durdur
@@ -135,6 +145,7 @@ namespace AlgorithmProject.Controllers
 
             return View("Result");
         }
+
         private int[] GenerateData(int size, string order)
         {
             if (size <= 0)
@@ -146,10 +157,9 @@ namespace AlgorithmProject.Controllers
             int[] data = new int[size];
             for (int i = 0; i < size; i++)
             {
-                data[i] = i + 1; // 1'den başla, size kadar devam et
+                data[i] = i + 1;
             }
 
-            // Diziyi sıralama işlemi
             switch (order.ToLower())
             {
                 case "random":
@@ -199,23 +209,22 @@ namespace AlgorithmProject.Controllers
                 // Pivot seçimi ve bölme
                 int pi = Partition(arr, low, high);
 
-                // Daha küçük olan alt aralık üzerinde tekrar QuickSort yap
                 if (pi - low < high - pi)
                 {
                     QuickSort(arr, low, pi - 1);
-                    low = pi + 1; // Sol taraf bitti, sağ taraf için devam
+                    low = pi + 1; 
                 }
                 else
                 {
                     QuickSort(arr, pi + 1, high);
-                    high = pi - 1; // Sağ taraf bitti, sol taraf için devam
+                    high = pi - 1; 
                 }
             }
         }
 
         private int Partition(int[] arr, int low, int high)
         {
-            int pivot = arr[high]; // Sağdaki elemanı pivot seç
+            int pivot = arr[high]; 
             int i = low - 1;
 
             for (int j = low; j < high; j++)
@@ -223,11 +232,11 @@ namespace AlgorithmProject.Controllers
                 if (arr[j] <= pivot)
                 {
                     i++;
-                    Swap(ref arr[i], ref arr[j]); // Küçük elemanları sola taşı
+                    Swap(ref arr[i], ref arr[j]); 
                 }
             }
 
-            Swap(ref arr[i + 1], ref arr[high]); // Pivot elemanını doğru yerine taşı
+            Swap(ref arr[i + 1], ref arr[high]); 
             return i + 1;
         }
 
@@ -353,12 +362,11 @@ namespace AlgorithmProject.Controllers
 
         public IActionResult Rapor()
         {
-            // Tüm verileri çekiyoruz
             var logs = _context.AlgorithmLogs.ToList();
 
-            // Algoritmalar için teorik değerler
             var theoreticalData = new Dictionary<string, (string BestCase, string AverageCase, string WorstCase)>
     {
+            // Algoritmalar için teorik değerler
         { "quick", ("O(n log n)", "O(n log n)", "O(n²)") },
         { "heap", ("O(n log n)", "O(n log n)", "O(n log n)") },
         { "shell", ("O(n log² n)", "O(n log² n)", "O(n²)") },
@@ -366,7 +374,6 @@ namespace AlgorithmProject.Controllers
         { "radix", ("O(nk)", "O(nk)", "O(nk)") }
     };
 
-            // Tüm kombinasyonlar için bir liste hazırlıyoruz
             var algorithms = new[] { "quick", "heap", "shell", "merge", "radix" };
             var arrayTypes = new[] { "random", "partially sorted", "reverse" };
             var arraySizes = new[] { 1000, 10000, 100000 };
@@ -401,19 +408,15 @@ namespace AlgorithmProject.Controllers
                         if (averageCpu == 0)
                             invalidMeasurementCount++;
 
-                        // Geçersiz ölçümleri içermeyen en iyi, en kötü ve ortalama hesaplamalar
                         var validMemoryLogs = filteredLogs.Where(log => log.AverageMemory > 0).ToList();
                         var validCpuLogs = filteredLogs.Where(log => log.AverageCpu > 0).ToList();
 
-                        // Eğer geçerli bellek verileri varsa, en iyi ve en kötü değeri hesaplıyoruz
                         double bestMemory = validMemoryLogs.Any() ? validMemoryLogs.Min(log => log.AverageMemory) : 0;
                         double worstMemory = validMemoryLogs.Any() ? validMemoryLogs.Max(log => log.AverageMemory) : 0;
 
-                        // Eğer geçerli CPU verileri varsa, en iyi ve en kötü değeri hesaplıyoruz
                         double bestCpu = validCpuLogs.Any() ? validCpuLogs.Min(log => log.AverageCpu) : 0;
                         double worstCpu = validCpuLogs.Any() ? validCpuLogs.Max(log => log.AverageCpu) : 0;
 
-                        // ViewModel için bir nesne oluşturuyoruz
                         viewModel.Add(new AlgorithmReportViewModel
                         {
                             Algorithm = algorithm,
@@ -439,7 +442,6 @@ namespace AlgorithmProject.Controllers
             }
             ViewBag.JsonData = JsonConvert.SerializeObject(viewModel);
 
-            // View'e model olarak gönderiyoruz
             return View(viewModel);
         }
 
