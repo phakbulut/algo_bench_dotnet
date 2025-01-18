@@ -15,7 +15,7 @@ driver = webdriver.Chrome(
 )
 
 # WebDriver ile işlemler yapılabilir
-driver.get("http://localhost:5281")
+driver.get("http://localhost:5000")
 driver.refresh()  # Sayfayı bir kere yeniliyoruz
 
 # Kombinasyonları tanımlama

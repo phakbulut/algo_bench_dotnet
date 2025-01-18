@@ -49,7 +49,7 @@
         @using (Html.BeginForm("Execute", "Process", FormMethod.Post))
         {
             <div class="form-group">
-                <label for="algorithm" class="form-label">Algoritma Seçin:</label>
+                <label for="algorithm" class="form-label">Select Algorithm</label>
                 <select class="form-select" name="algorithm" id="algorithm">
                     <option value="quick">Quick Sort</option>
                     <option value="heap">Heap Sort</option>
@@ -60,7 +60,7 @@
             </div>
 
             <div class="form-group">
-                <label for="dataSize" class="form-label">Veri Boyutu:</label>
+                <label for="dataSize" class="form-label">Array Size:</label>
                 <select class="form-select" name="dataSize" id="dataSize">
                     <option value="1000">1k</option>
                     <option value="10000">10k</option>
@@ -69,7 +69,7 @@
             </div>
 
             <div class="form-group">
-                <label for="order" class="form-label">Sıralama Türü:</label>
+                <label for="order" class="form-label">Array Type:</label>
                 <select class="form-select" name="order" id="order">
                     <option value="random">Random</option>
                     <option value="partially sorted">Partially Sorted</option>
@@ -77,9 +77,9 @@
                 </select>
             </div>
 
-            <button type="submit" class="btn btn-primary btn-run">Algoritmayı Çalıştır</button>
+            <button type="submit" class="btn btn-primary btn-run">Run Algorithm</button>
         }
 
-        <a href="@Url.Action("Rapor", "Process")" class="report-link">Raporu Görüntüle</a>
+        <a href="@Url.Action("Rapor", "Process")" class="report-link">View Report</a>
     </div>
 </div>

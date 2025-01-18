@@ -16,14 +16,12 @@
             border-radius: 5px;
             margin: 10px 0;
             font-family: monospace;
-            /* Yatay scroll için eklenen özellikler */
             max-height: 100px;
             overflow-x: auto;
             overflow-y: hidden;
             white-space: nowrap;
             scrollbar-width: thin;
         }
-            /* Scroll bar stilleri */
             .array-display::-webkit-scrollbar {
                 height: 8px;
             }
@@ -69,7 +67,7 @@
     </style>
 }
 <div class="result-container">
-    <h2 class="mb-4">Algoritma Sonuçları</h2>
+    <h2 class="mb-4">Algorith Result</h2>
 
     <div class="card mb-4">
         <div class="card-body">
@@ -90,12 +88,12 @@
 
     <div class="card mb-4">
         <div class="card-body">
-            <h4 class="card-title">Orijinal Dizi:</h4>
+            <h4 class="card-title">Original Array:</h4>
             <div class="array-display">
                 @string.Join(", ", ViewBag.OriginalArray)
             </div>
 
-            <h4 class="card-title mt-4">Sıralanmış Dizi:</h4>
+            <h4 class="card-title mt-4">Sorted Array:</h4>
             <div class="array-display">
                 @string.Join(", ", ViewBag.SortedArray)
             </div>
@@ -104,15 +102,15 @@
 
     <div class="card">
         <div class="card-body">
-            <h3 class="card-title mb-4">Kaynak Kullanımı</h3>
+            <h3 class="card-title mb-4">Resource Usage</h3>
 
             <div class="table-responsive">
                 <table class="table table-striped table-bordered">
                     <thead>
                         <tr>
-                            <th>Zaman (s)</th>
-                            <th>Hafıza (MB)</th>
-                            <th>CPU Kullanımı (%)</th>
+                            <th>Time (s)</th>
+                            <th>Memory (MB)</th>
+                            <th>CPU Usage (%)</th>
                         </tr>
                     </thead>
                     <tbody>
@@ -129,16 +127,16 @@
             </div>
 
             <div class="average-metrics mt-4">
-                <h4 class="mb-3">Ortalama Kaynak Kullanımı</h4>
+                <h4 class="mb-3">Average Resource Usage</h4>
                 <div class="row">
                     <div class="col-md-4">
-                        <p>Zaman (s): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageTime)</span></p>
+                        <p>Time (s): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageTime)</span></p>
                     </div>
                     <div class="col-md-4">
-                        <p>Hafıza (MB): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageMemory)</span></p>
+                        <p>Memory (MB): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageMemory)</span></p>
                     </div>
                     <div class="col-md-4">
-                        <p>CPU Kullanımı (%): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageCpu)</span></p>
+                        <p>CPU Usage (%): <span class="metric-value">@string.Format("{0:F6}", ViewBag.AverageCpu)</span></p>
                     </div>
                 </div>
             </div>
