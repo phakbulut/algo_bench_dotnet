@@ -1,0 +1,15 @@
+# Backend Requirements
+.NET 8 (https://dotnet.microsoft.com/)
+Entity Framework Core (MySQL connector)
+
+# Frontend Requirements
+Bootstrap (https://getbootstrap.com/)
+ApexCharts.js (https://apexcharts.com/)
+HTML5, CSS3, JavaScript
+
+# Database
+MySQL Server (https://www.mysql.com/)
+phpMyAdmin (https://www.phpmyadmin.net/)
+
+# Development Tools
+Visual Studio (https://visualstudio.microsoft.com/)
