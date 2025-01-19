@@ -24,7 +24,7 @@ data_sizes = ["1000", "10000", "100000"]
 orders = ["random", "partially sorted", "reverse"]
 
 # Her kombinasyon için döngü
-for _ in range(50):  # 50 kez tekrar edilecek
+for _ in range(500):  # 50 kez tekrar edilecek
     for algorithm in algorithms:
         for data_size in data_sizes:
             for order in orders:
