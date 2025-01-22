@@ -5,33 +5,27 @@ import time
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import Select
 
-# Chrome için tarayıcı ayarlarını yapılandırıyoruz
 options = Options()
 options.binary_location = r"C:\Program Files\Google\Chrome\Application\chrome.exe"  # Chrome'un yüklü olduğu yol
 
-# WebDriver Manager ile ChromeDriver'ı indirip başlatıyoruz
 driver = webdriver.Chrome(
-    options=options  # Tarayıcı seçenekleri
+    options=options  
 )
 
-# WebDriver ile işlemler yapılabilir
 driver.get("http://localhost:5000")
-driver.refresh()  # Sayfayı bir kere yeniliyoruz
+driver.refresh() 
 
-# Kombinasyonları tanımlama
 algorithms = ["quick", "heap", "shell", "radix", "merge"]
 data_sizes = ["1000", "10000", "100000"]
 orders = ["random", "partially sorted", "reverse"]
 
-# Her kombinasyon için döngü
-for _ in range(500):  # 50 kez tekrar edilecek
+for _ in range(500):  
     for algorithm in algorithms:
         for data_size in data_sizes:
             for order in orders:
                 try:
-                    # Sayfayı yenileyelim
-                    driver.refresh()  # Sayfa her açıldığında bir kere yenilenecek
-                    driver.refresh()  # Sayfa her açıldığında bir kere yenilenecek
+                    driver.refresh() 
+                    driver.refresh()  
 
                     # Algoritmayı seç
                     algorithm_select = Select(driver.find_element(By.ID, "algorithm"))
@@ -49,7 +43,6 @@ for _ in range(500):  # 50 kez tekrar edilecek
                     submit_button = driver.find_element(By.CLASS_NAME, "btn-run")
                     submit_button.click()
 
-                    # Çıktıyı bekle (Sayfa yüklenmesini beklemek için süreyi ayarlayabilirsin)
                     time.sleep(1)  # Çıkış sayfası yüklendikten sonra bekleme süresi
 
                     # Geri dön
@@ -59,5 +52,4 @@ for _ in range(500):  # 50 kez tekrar edilecek
                 except Exception as e:
                     print(f"Hata oluştu: {e}")
 
-# İşlem tamamlandıktan sonra tarayıcıyı kapat
 driver.quit()

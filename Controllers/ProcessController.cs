@@ -29,8 +29,8 @@ namespace AlgorithmProject.Controllers
         {
             using (var cpuCounter = new PerformanceCounter("Processor", "% Processor Time", "_Total"))
             {
-                cpuCounter.NextValue();  // İlk okuma (gereksiz, sadece bir başlangıç okumadır)
-                Thread.Sleep(100);  // 1 saniye bekle
+                cpuCounter.NextValue();  
+                Thread.Sleep(100);  
                 return cpuCounter.NextValue();  // Gerçek CPU kullanımı
             }
         }
@@ -40,15 +40,12 @@ namespace AlgorithmProject.Controllers
             _context = context;
             _logQueue = new List<AlgorithmLog>();
         }
-        // POST: Process/Execute
         [HttpPost]
         public async Task<ActionResult> Execute(string algorithm, int dataSize, string order)
         {
-            // Veri oluşturma
             int[] data = GenerateData(dataSize, order);
             int[] originalData = (int[])data.Clone();
 
-            // Kaynak kullanımı takibi
             List<(double Time, double MemoryMB, double Cpu)> resourceUsage = new();
             var stopwatch = Stopwatch.StartNew();
 
@@ -69,7 +66,6 @@ namespace AlgorithmProject.Controllers
                     // Logu kaydet
                     resourceUsage.Add((stopwatch.Elapsed.TotalSeconds, memoryUsageMB, cpuUsage));
 
-                    // 1 ms bekle
                     await Task.Delay(100); // 1 ms bekleme
                 }
             }, token);
@@ -106,7 +102,6 @@ namespace AlgorithmProject.Controllers
                 GC.Collect();
             }
 
-            // Ölçümleri durdur
             stopwatch.Stop();
             cancellationTokenSource.Cancel(); // Timer'ı durdur
 
@@ -118,7 +113,6 @@ namespace AlgorithmProject.Controllers
             var averageCpu = resourceUsage.Any() ? resourceUsage.Average(r => r.Cpu) : 0;
             var averageTime = resourceUsage.Any() ? resourceUsage.Average(r => r.Time) : 0;
 
-            // Veritabanına kaydetmek için yeni bir log oluşturuyoruz
             var algorithmLog = new AlgorithmLog
             {
                 Algorithm = algorithm,
@@ -206,7 +200,6 @@ namespace AlgorithmProject.Controllers
         {
             while (low < high)
             {
-                // Pivot seçimi ve bölme
                 int pi = Partition(arr, low, high);
 
                 if (pi - low < high - pi)
@@ -366,7 +359,6 @@ namespace AlgorithmProject.Controllers
 
             var theoreticalData = new Dictionary<string, (string BestCase, string AverageCase, string WorstCase)>
     {
-            // Algoritmalar için teorik değerler
         { "quick", ("O(n log n)", "O(n log n)", "O(n²)") },
         { "heap", ("O(n log n)", "O(n log n)", "O(n log n)") },
         { "shell", ("O(n log² n)", "O(n log² n)", "O(n²)") },
@@ -431,8 +423,8 @@ namespace AlgorithmProject.Controllers
                             AverageCpu = Math.Round(averageCpu, 3),
                             BestCpu = Math.Round(bestCpu, 3),
                             WorstCpu = Math.Round(worstCpu, 3),
-                            ExecutionCount = filteredLogs.Count, // Çalıştırma sayısı
-                            TheoreticalBestCase = theoreticalData[algorithm].BestCase, // Teorik veriler
+                            ExecutionCount = filteredLogs.Count, 
+                            TheoreticalBestCase = theoreticalData[algorithm].BestCase, 
                             TheoreticalAverageCase = theoreticalData[algorithm].AverageCase,
                             TheoreticalWorstCase = theoreticalData[algorithm].WorstCase,
                             InvalidMeasurementCount = invalidMeasurementCount // Geçersiz ölçüm sayısı
